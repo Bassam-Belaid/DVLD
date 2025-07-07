@@ -1,0 +1,12 @@
+C:\Users\Bassam\Desktop\DVLD\DVLDDataAccessLayer\bin\Debug\DVLDDataAccessLayer.dll
+C:\Users\Bassam\Desktop\DVLD\DVLDDataAccessLayer\bin\Debug\DVLDDataAccessLayer.pdb
+C:\Users\Bassam\Desktop\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Bassam\Desktop\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Bassam\Desktop\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.dll
+C:\Users\Bassam\Desktop\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.pdb
+C:\Users\HP\Desktop\Bassam\DVLD\DVLDDataAccessLayer\bin\Debug\DVLDDataAccessLayer.dll
+C:\Users\HP\Desktop\Bassam\DVLD\DVLDDataAccessLayer\bin\Debug\DVLDDataAccessLayer.pdb
+C:\Users\HP\Desktop\Bassam\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\Bassam\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Bassam\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.dll
+C:\Users\HP\Desktop\Bassam\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.pdb
