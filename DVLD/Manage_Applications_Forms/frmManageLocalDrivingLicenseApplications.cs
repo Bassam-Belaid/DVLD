@@ -138,13 +138,13 @@ namespace DVLD.Manage_Applications_Forms
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            //if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowTestTypesList))
-            //{
-            frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
-            AddNewLocalDrivingLicenseApplication.ShowDialog();
-            _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eAddNewLocalDrivingLicenseApplication))
+            {
+                 frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
+                 AddNewLocalDrivingLicenseApplication.ShowDialog();
+                 _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
 
-            //}
+            }
         }
 
         private void cbxLocalDrivingLicenseApplicationsFilter_SelectedValueChanged(object sender, EventArgs e)
@@ -160,58 +160,64 @@ namespace DVLD.Manage_Applications_Forms
 
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-
-            DialogResult Result = MessageBox.Show("Are You Sure You Want To Cancel The Application [" + LocalDrivingApplicationID.ToString() + "] ?",
-                            "Confirm Cancel",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Question);
-
-            if (Result == DialogResult.Yes)
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eCancelLocalDrivingLicenseApplication))
             {
-                if (clsLocalDrivingApplication.CancelLocalDrivingLicenseApplication(LocalDrivingApplicationID))
+                int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+                DialogResult Result = MessageBox.Show("Are You Sure You Want To Cancel The Application [" + LocalDrivingApplicationID.ToString() + "] ?",
+                                "Confirm Cancel",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+                if (Result == DialogResult.Yes)
                 {
-                    MessageBox.Show("The Application Has Been Canceled Successfully",
-                                    "Success",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-                    _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
-                }
-                else
-                {
-                    MessageBox.Show("Failed To Cancel The Application. Please Try Again.",
-                                    "Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                    if (clsLocalDrivingApplication.CancelLocalDrivingLicenseApplication(LocalDrivingApplicationID))
+                    {
+                        MessageBox.Show("The Application Has Been Canceled Successfully",
+                                        "Success",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                        _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed To Cancel The Application. Please Try Again.",
+                                        "Error",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
         private void deleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-
-            DialogResult Result = MessageBox.Show("Are You Sure You Want To Delete The Application [" + LocalDrivingApplicationID.ToString() + "] ?",
-                            "Confirm Delete",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Question);
-
-            if (Result == DialogResult.Yes)
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eDeleteLocalDrivingLicenseApplication))
             {
-                if (clsLocalDrivingApplication.DeleteLocalDrivingLicenseApplication(LocalDrivingApplicationID))
+                int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+                DialogResult Result = MessageBox.Show("Are You Sure You Want To Delete The Application [" + LocalDrivingApplicationID.ToString() + "] ?",
+                                "Confirm Delete",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+                if (Result == DialogResult.Yes)
                 {
-                    MessageBox.Show("The Application Has Been Deleted Successfully",
-                                    "Success",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-                    _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
-                }
-                else
-                {
-                    MessageBox.Show("Failed To Delete The Application. Please Try Again.",
-                                    "Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                    if (clsLocalDrivingApplication.DeleteLocalDrivingLicenseApplication(LocalDrivingApplicationID))
+                    {
+                        MessageBox.Show("The Application Has Been Deleted Successfully",
+                                        "Success",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                        _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed To Delete The Application. Please Try Again.",
+                                        "Error",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
                 }
             }
         }

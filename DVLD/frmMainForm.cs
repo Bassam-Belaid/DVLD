@@ -112,20 +112,20 @@ namespace DVLD
 
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowTestTypesList))
-            //{
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eAddNewLocalDrivingLicenseApplication))
+            {
                 frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
                 AddNewLocalDrivingLicenseApplication.ShowDialog();
-            //}
+            }
         }
 
         private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowTestTypesList))
-            //{
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowLocalDrivingLicenseApplicationsList))
+            {
             frmManageLocalDrivingLicenseApplications ManageLocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
             ManageLocalDrivingLicenseApplications.ShowDialog();
-            //}
+            }
         }
     }
 }
