@@ -1,0 +1,131 @@
+﻿using System;
+using System.Windows.Forms;
+using DVLD.Manage_Applications_Forms;
+using DVLD.Manage_Applications_Forms.Manage_Application_Types_Forms;
+using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms;
+using DVLD.Manage_Applications_Forms.Manage_Test_Types_Forms;
+using DVLD.Manage_People_Forms;
+using DVLD.Manage_Users_Forms;
+using DVLDBusinessLayer;
+
+namespace DVLD
+{
+    public partial class frmMainForm : Form
+    {
+        public frmMainForm()
+        {
+            InitializeComponent();
+        }
+
+        private void _ShowNotImplementedMessage()
+        {
+            MessageBox.Show(
+                "Not implemented",
+                "Notification",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+        }
+
+        private void _Logout()
+        {
+            clsGlobal.CurrentUser = null;
+            this.Close();
+        }
+
+        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowPeopleList))
+            {
+                frmManagePeople frmManagePeople = new frmManagePeople();
+                frmManagePeople.ShowDialog();
+            }
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ShowNotImplementedMessage();
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowUsersList))
+            {
+                frmManageUsers frmManageUsers = new frmManageUsers();
+                frmManageUsers.ShowDialog();
+            }
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserDetails UserDetails = new frmUserDetails(clsGlobal.CurrentUser.GetUserID());
+            UserDetails.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword ChangePassword = new frmChangePassword(clsGlobal.CurrentUser.GetUserID(), clsGlobal.CurrentUser.Password);
+            ChangePassword.ShowDialog();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult Result = MessageBox.Show("Are You Sure You Want To Log Out ?",
+                            "Confirm Log Out",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+
+            if (Result == DialogResult.Yes)
+                _Logout();
+        }
+
+        private void frmMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (clsGlobal.IsUserLoggedIn())
+            {
+
+                MessageBox.Show("To Close The App Please Go To Account Settings And Log Out.",
+                        "Close Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
+        }
+
+        private void manageApplicationsTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowApplicationTypesList))
+            {
+                frmManageApplicationTypes ManageApplicationTypes = new frmManageApplicationTypes();
+                ManageApplicationTypes.ShowDialog();
+            }
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowTestTypesList))
+            {
+                frmManageTestTypes ManageTestTypes = new frmManageTestTypes();
+                ManageTestTypes.ShowDialog();
+            }
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowTestTypesList))
+            //{
+                frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
+                AddNewLocalDrivingLicenseApplication.ShowDialog();
+            //}
+        }
+
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowTestTypesList))
+            //{
+            frmManageLocalDrivingLicenseApplications ManageLocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
+            ManageLocalDrivingLicenseApplications.ShowDialog();
+            //}
+        }
+    }
+}
