@@ -10,6 +10,8 @@ namespace DVLDBusinessLayer
         private string _TestTypeDescription;
         private decimal _TestTypeFees;
 
+        public static int NumberOfTestTypes = 3;
+
         public clsTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, decimal TestTypeFees)
         {
             _TestTypeID = TestTypeID;

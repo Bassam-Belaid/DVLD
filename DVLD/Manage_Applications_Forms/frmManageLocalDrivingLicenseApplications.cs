@@ -1,4 +1,5 @@
-﻿using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms;
+﻿using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_Local_Driving_License_Applications_Tests;
+using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms;
 using DVLDBusinessLayer;
 using System;
 using System.Data;
@@ -21,8 +22,6 @@ namespace DVLD.Manage_Applications_Forms
         }
 
         private _enFilter _Filter;
-
-        private static int _NumberOfTests = 3;
 
         public frmManageLocalDrivingLicenseApplications()
         {
@@ -222,33 +221,54 @@ namespace DVLD.Manage_Applications_Forms
             }
         }
 
+        private void _DisableAllTests() 
+        {
+            visionTestToolStripMenuItem.Enabled = false;
+            scheduleWrittenTestToolStripMenuItem.Enabled = false;
+            scheduleStreetTestToolStripMenuItem.Enabled = false;
+        }
+
         private void _SetTestsStatus(int LocalDrivingApplicationID) 
         {
-           int NumberOfTakenTests = clsLocalDrivingApplication.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(LocalDrivingApplicationID);
+           byte NumberOfTakenTests = clsLocalDrivingApplication.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(LocalDrivingApplicationID);
 
-            if (NumberOfTakenTests == _NumberOfTests) 
+            if (NumberOfTakenTests == 255)
             {
                 visionTestToolStripMenuItem.Enabled = false;
                 scheduleWrittenTestToolStripMenuItem.Enabled = false;
                 scheduleStreetTestToolStripMenuItem.Enabled = false;
+                return;
+            }
+            if (NumberOfTakenTests == clsTestType.NumberOfTestTypes) 
+            {
+                visionTestToolStripMenuItem.Enabled = false;
+                scheduleWrittenTestToolStripMenuItem.Enabled = false;
+                scheduleStreetTestToolStripMenuItem.Enabled = false;
+                return;
+
             }
             else if (NumberOfTakenTests == 0)
             {
                 visionTestToolStripMenuItem.Enabled = true;
                 scheduleWrittenTestToolStripMenuItem.Enabled = false;
                 scheduleStreetTestToolStripMenuItem.Enabled = false;
+                return;
+
             }
             else if (NumberOfTakenTests == 1)
             {
                 visionTestToolStripMenuItem.Enabled = false;
                 scheduleWrittenTestToolStripMenuItem.Enabled = true;
                 scheduleStreetTestToolStripMenuItem.Enabled = false;
+                return;
+
             }
             else if (NumberOfTakenTests == 2)
             {
                 visionTestToolStripMenuItem.Enabled = false;
                 scheduleWrittenTestToolStripMenuItem.Enabled = false;
                 scheduleStreetTestToolStripMenuItem.Enabled = true;
+                return;
             }
         }
 
@@ -260,7 +280,10 @@ namespace DVLD.Manage_Applications_Forms
        
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmScheduleVisionTestAppointment ScheduleVisionTestAppointment = new frmScheduleVisionTestAppointment(LocalDrivingApplicationID);
+            ScheduleVisionTestAppointment.ShowDialog();
         }
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)

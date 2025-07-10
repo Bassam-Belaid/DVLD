@@ -16,5 +16,10 @@ namespace DVLDBusinessLayer
         {
             return clsLicenseClassData.GetLicenseClassIDByLicenseClassName(LicenseClassName);
         }
+
+        public static string GetLicenseClassNameByLicenseClassID(int LicenseClassID) 
+        {
+            return clsLicenseClassData.GetLicenseClassNameByLicenseClassID(LicenseClassID);
+        }
     }
 }

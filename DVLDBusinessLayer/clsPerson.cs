@@ -339,5 +339,10 @@ namespace DVLDBusinessLayer
 
             return false;
         }
+
+        public static string GetPersonFullNameByPersonID(int PersonID) 
+        {
+            return clsPersonData.GetPersonFullNameByPersonID(PersonID);
+        }
     }
 }

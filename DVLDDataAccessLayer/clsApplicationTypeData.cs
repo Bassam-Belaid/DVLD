@@ -258,5 +258,50 @@ namespace DVLDDataAccessLayer
 
             return IsFound;
         }
+
+        public static string GetApplicationTypeTitleByApplicationTypeID(int ApplicationTypeID)
+        {
+
+            string ApplicationTypeTitle = null;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT ApplicationTypeTitle FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null)
+                {
+                    ApplicationTypeTitle = Result.ToString();
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return ApplicationTypeTitle;
+
+        }
     }
 }

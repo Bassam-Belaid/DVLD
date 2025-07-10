@@ -1259,5 +1259,54 @@ namespace DVLDDataAccessLayer
 
             return ImagePath;
         }
+
+        public static string GetPersonFullNameByPersonID(int PersonID)
+        {
+
+            string FullName = null;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"SELECT (People.FirstName + ' ' + 
+                             People.SecondName + ' ' + 
+                             CASE WHEN People.ThirdName IS NOT NULL THEN People.ThirdName + ' ' ELSE '' END + 
+                             People.LastName) AS FullName 
+	                         From People 
+                             WHERE PersonID = @PersonID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null)
+                {
+                    FullName = Result.ToString();
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return FullName;
+        }
     }
 }

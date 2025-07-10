@@ -173,5 +173,9 @@ namespace DVLDBusinessLayer
 
             return false;
         }
+        public static string GetUserNameByUserID(int UserID)
+        {
+            return clsUserData.GetUserNameByUserID(UserID);
+        }
     }
 }

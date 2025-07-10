@@ -411,14 +411,13 @@ namespace DVLDDataAccessLayer
             try
             {
                 Connection.Open();
-                SqlDataReader Reader = Command.ExecuteReader();
+               
+                object Result = Command.ExecuteScalar();
 
-                if (Reader.Read())
-                {  
-                    Password = (string)Reader["Password"];
+                if (Result != null)
+                {
+                    Password = Result.ToString();
                 }
-            
-                Reader.Close();
             }
 
             catch (SqlException sqlEx)
@@ -714,6 +713,50 @@ namespace DVLDDataAccessLayer
             }
 
             return IsMatch;
+        }
+
+        public static string GetUserNameByUserID(int UserID)
+        {
+
+            string UserName = null;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT UserName From Users WHERE UserID = @UserID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@UserID", UserID);
+
+            try
+            {
+
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null)
+                {
+                    UserName = Result.ToString();
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return UserName;
         }
 
     }

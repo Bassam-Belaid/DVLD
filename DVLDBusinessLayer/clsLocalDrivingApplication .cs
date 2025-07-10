@@ -17,9 +17,14 @@ namespace DVLDBusinessLayer
         {
             return _LocalDrivingApplicationID;
         }
+        public int GetApplicationID()
+        {
+            return this.ApplicationID;
+        }
 
         public clsLocalDrivingApplication()
         {
+            this.ApplicationID = -1;
             this.ApplicantPersonID = -1;
             this.ApplicationDate = DateTime.Now;
             this.ApplicationTypeID = clsApplicationType.GetApplicationTypeIDByApplicationTypeTitle(_DefaultApplicationType);
@@ -29,6 +34,21 @@ namespace DVLDBusinessLayer
             this.CreatedByUserID = clsGlobal.CurrentUser.GetUserID();
             this._LocalDrivingApplicationID = -1;
             this.LicenseClassID = -1;
+        }
+
+        public clsLocalDrivingApplication(int LDLAppID, int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
+            byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
+        {
+            this.ApplicationID = ApplicationID;
+            this.ApplicantPersonID = ApplicantPersonID;
+            this.ApplicationDate = ApplicationDate;
+            this.ApplicationTypeID = clsApplicationType.GetApplicationTypeIDByApplicationTypeTitle(_DefaultApplicationType);
+            this.ApplicationStatus = ApplicationStatus;
+            this.LastStatusDate = LastStatusDate;
+            this.PaidFees = PaidFees;
+            this.CreatedByUserID = CreatedByUserID;
+            this._LocalDrivingApplicationID = LDLAppID;
+            this.LicenseClassID = LicenseClassID;
         }
 
         private bool _AddNewLocalDrivingApplication() 
@@ -81,7 +101,7 @@ namespace DVLDBusinessLayer
             return clsLocalDrivingApplicationData.DeleteLocalDrivingLicenseApplication(LDLAppID);
         }
 
-        public static int NumberOfTestsThatTakenByLocalDrivingLicenseApplication(int LDLAppID) 
+        public static byte NumberOfTestsThatTakenByLocalDrivingLicenseApplication(int LDLAppID) 
         {
             return clsLocalDrivingApplicationData.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(LDLAppID);
         }
@@ -89,6 +109,37 @@ namespace DVLDBusinessLayer
         public bool Save() 
         {
             return _AddNewLocalDrivingApplication();
+        }
+
+        public static clsLocalDrivingApplication GetLocalDrivingLicenseApplicationInfoByLDLAppID(int LDLAppID)
+        {
+            int ApplicationID = -1, ApplicantPersonID = -1, CreatedByUserID = -1, LicenseClassID = -1;
+            byte ApplicationStatus = 0;
+            DateTime ApplicationDate = DateTime.Now, LastStatusDate = DateTime.Now;
+            decimal PaidFees = 0;
+
+            if (clsLocalDrivingApplicationData.GetLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID, ref ApplicationID, ref ApplicantPersonID, ref ApplicationDate,
+                ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref CreatedByUserID, ref LicenseClassID))
+                return new clsLocalDrivingApplication(LDLAppID, ApplicationID, ApplicantPersonID, ApplicationDate,
+                    ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID, LicenseClassID);
+
+            else
+                return null;
+        }
+
+        public string GetApplicationStatus()
+        {
+            switch ((enApplicationStatus)this.ApplicationStatus)
+            {
+                case enApplicationStatus.eNew:
+                    return "New";
+
+                case enApplicationStatus.eCanceled:
+                    return "Canceled";
+
+                default:
+                    return "Completed";
+            }
         }
 
     }
