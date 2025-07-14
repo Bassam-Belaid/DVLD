@@ -1308,5 +1308,49 @@ namespace DVLDDataAccessLayer
 
             return FullName;
         }
+
+        public static bool GetPersonGenderByPersonID(int PersonID)
+        {
+
+            bool PersonGender = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT Gender From People WHERE PersonID = @PersonID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null && Boolean.TryParse(Result.ToString(), out bool Gender))
+                {
+                    PersonGender = Gender;
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return PersonGender;
+        }
     }
 }

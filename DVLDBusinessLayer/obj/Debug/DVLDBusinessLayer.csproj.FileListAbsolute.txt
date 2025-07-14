@@ -42,3 +42,14 @@ C:\Bassam\My-Github-Projects\DVLD---Driving-License-Management\DVLDBusinessLayer
 C:\Bassam\My-Github-Projects\DVLD---Driving-License-Management\DVLDBusinessLayer\obj\Debug\DVLDBusi.7D6D57CA.Up2Date
 C:\Bassam\My-Github-Projects\DVLD---Driving-License-Management\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.dll
 C:\Bassam\My-Github-Projects\DVLD---Driving-License-Management\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.pdb
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDBusinessLayer.dll
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDBusinessLayer.pdb
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDDataAccessLayer.dll
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\Validation.dll
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDDataAccessLayer.pdb
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\Validation.pdb
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.csproj.AssemblyReference.cache
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.csproj.CoreCompileInputs.cache
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusi.7D6D57CA.Up2Date
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.dll
+C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.pdb

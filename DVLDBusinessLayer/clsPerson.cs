@@ -344,5 +344,10 @@ namespace DVLDBusinessLayer
         {
             return clsPersonData.GetPersonFullNameByPersonID(PersonID);
         }
+
+        public static bool GetPersonGenderByPersonID(int PersonID) 
+        {
+            return clsPersonData.GetPersonGenderByPersonID(PersonID);
+        }
     }
 }

@@ -28,6 +28,11 @@ namespace DVLD
             return clsLocalDrivingApplication.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(_LocalDrivingApplication.GetLocalDrivingApplicationID()).ToString() + "/" + clsTestType.NumberOfTestTypes.ToString();
         }
 
+        private void _SetApplicantIcon(bool Gender) 
+        {
+            pbxApplicant.Image = (Gender) ? Properties.Resources.Male : Properties.Resources.Female;
+        }
+
         public void LoadLocalDrivingLicenseApplicationInfoByLDLAppID(int LDLAppID) 
         {
             _LocalDrivingApplication = clsLocalDrivingApplication.GetLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
@@ -44,6 +49,7 @@ namespace DVLD
             lblApplicationDate.Text = _LocalDrivingApplication.ApplicationDate.ToString("dd/MM/yyyy");
             lblLastStatusDate.Text = _LocalDrivingApplication.LastStatusDate.ToString("dd/MM/yyyy");
             lblCreatedBy.Text = clsUser.GetUserNameByUserID(_LocalDrivingApplication.CreatedByUserID);
+            _SetApplicantIcon(clsPerson.GetPersonGenderByPersonID(_LocalDrivingApplication.ApplicantPersonID));
         }
 
         private void llblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -53,6 +59,11 @@ namespace DVLD
                 frmPersonDetails frmPersonDetails = new frmPersonDetails(_LocalDrivingApplication.ApplicantPersonID);
                 frmPersonDetails.ShowDialog();
             }
+        }
+
+        private void llblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

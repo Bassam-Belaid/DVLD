@@ -64,6 +64,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblApplicationID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.llblShowLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -81,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.llblShowLicenseInfo);
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.lblPassedTests);
             this.groupBox1.Controls.Add(this.lblLicenseClass);
@@ -463,6 +465,18 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "ID :";
             // 
+            // llblShowLicenseInfo
+            // 
+            this.llblShowLicenseInfo.AutoSize = true;
+            this.llblShowLicenseInfo.Enabled = false;
+            this.llblShowLicenseInfo.Location = new System.Drawing.Point(75, 75);
+            this.llblShowLicenseInfo.Name = "llblShowLicenseInfo";
+            this.llblShowLicenseInfo.Size = new System.Drawing.Size(140, 20);
+            this.llblShowLicenseInfo.TabIndex = 37;
+            this.llblShowLicenseInfo.TabStop = true;
+            this.llblShowLicenseInfo.Text = "Show License Info";
+            this.llblShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblShowLicenseInfo_LinkClicked);
+            // 
             // ctrlLocalDrivingLicenseApplicationCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -528,5 +542,6 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel llblViewPersonInfo;
+        private System.Windows.Forms.LinkLabel llblShowLicenseInfo;
     }
 }

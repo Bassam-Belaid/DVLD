@@ -7,15 +7,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDBusinessLayer;
 
 namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_Local_Driving_License_Applications_Tests
 {
     public partial class frmScheduleVisionTestAppointment : Form
     {
+
+        private static string _TestTypeTitle = "Vision Test";
+
         public frmScheduleVisionTestAppointment(int LDLAppID)
         {
             InitializeComponent();
             ctrlLocalDrivingLicenseApplicationCard1.LoadLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
+            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, _TestTypeTitle));
+        }
+
+        private void _AppointmentsListForLocalDrivingLicenseApplication(DataTable dataTable)
+        {
+            dataGridView1.DataSource = dataTable;
+            lblNumberOfRecords.Text = (dataTable == null) ? "0" : (" " + dataTable.Rows.Count.ToString());
+
+            if (dataTable == null)
+                return;
+
+            dataTable.Columns[0].ColumnName = "Appointment ID";
+            dataTable.Columns[1].ColumnName = "Appointment Date";
+            dataTable.Columns[2].ColumnName = "Paid Fees";
+            dataTable.Columns[3].ColumnName = "Is Locked";
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
