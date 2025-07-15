@@ -53,3 +53,14 @@ C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.
 C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusi.7D6D57CA.Up2Date
 C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.dll
 C:\Bassam\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDBusinessLayer.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDBusinessLayer.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDDataAccessLayer.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\Validation.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\DVLDDataAccessLayer.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\bin\Debug\Validation.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusi.7D6D57CA.Up2Date
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDBusinessLayer\obj\Debug\DVLDBusinessLayer.pdb

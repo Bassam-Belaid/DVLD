@@ -22,3 +22,9 @@ C:\Bassam\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLa
 C:\Bassam\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.csproj.CoreCompileInputs.cache
 C:\Bassam\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.dll
 C:\Bassam\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDDataAccessLayer\bin\Debug\DVLDDataAccessLayer.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDDataAccessLayer\bin\Debug\DVLDDataAccessLayer.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLDDataAccessLayer\obj\Debug\DVLDDataAccessLayer.pdb

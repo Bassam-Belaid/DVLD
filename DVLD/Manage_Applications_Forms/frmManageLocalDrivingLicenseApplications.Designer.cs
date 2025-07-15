@@ -123,14 +123,14 @@
             this.deleToolStripMenuItem,
             this.scheduleTestsToolStripMenuItem});
             this.cmsManageLocalApplications.Name = "cmsManageLocalApplications";
-            this.cmsManageLocalApplications.Size = new System.Drawing.Size(197, 140);
+            this.cmsManageLocalApplications.Size = new System.Drawing.Size(191, 118);
             // 
             // cancelToolStripMenuItem
             // 
             this.cancelToolStripMenuItem.Image = global::DVLD.Properties.Resources.Cancel_Application;
             this.cancelToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(190, 38);
             this.cancelToolStripMenuItem.Text = "Cancel Application";
             this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
@@ -139,7 +139,7 @@
             this.deleToolStripMenuItem.Image = global::DVLD.Properties.Resources.Delete_Application;
             this.deleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleToolStripMenuItem.Name = "deleToolStripMenuItem";
-            this.deleToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.deleToolStripMenuItem.Size = new System.Drawing.Size(190, 38);
             this.deleToolStripMenuItem.Text = "Delete Application";
             this.deleToolStripMenuItem.Click += new System.EventHandler(this.deleToolStripMenuItem_Click);
             // 
@@ -152,7 +152,7 @@
             this.scheduleTestsToolStripMenuItem.Image = global::DVLD.Properties.Resources.Schedule_Tests;
             this.scheduleTestsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.scheduleTestsToolStripMenuItem.Name = "scheduleTestsToolStripMenuItem";
-            this.scheduleTestsToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.scheduleTestsToolStripMenuItem.Size = new System.Drawing.Size(190, 38);
             this.scheduleTestsToolStripMenuItem.Text = "Schedule Tests";
             this.scheduleTestsToolStripMenuItem.DropDownOpened += new System.EventHandler(this.scheduleTestsToolStripMenuItem_DropDownOpened);
             // 

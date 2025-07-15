@@ -58,6 +58,7 @@ namespace DVLD
             {
                 frmPersonDetails frmPersonDetails = new frmPersonDetails(_LocalDrivingApplication.ApplicantPersonID);
                 frmPersonDetails.ShowDialog();
+                LoadLocalDrivingLicenseApplicationInfoByLDLAppID(_LocalDrivingApplication.GetLocalDrivingApplicationID());
             }
         }
 

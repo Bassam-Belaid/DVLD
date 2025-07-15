@@ -284,6 +284,7 @@ namespace DVLD.Manage_Applications_Forms
 
             frmScheduleVisionTestAppointment ScheduleVisionTestAppointment = new frmScheduleVisionTestAppointment(LocalDrivingApplicationID);
             ScheduleVisionTestAppointment.ShowDialog();
+            _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
         }
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)

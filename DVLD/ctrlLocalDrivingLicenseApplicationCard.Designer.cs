@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.llblShowLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblPassedTests = new System.Windows.Forms.Label();
             this.lblLicenseClass = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblApplicationID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.llblShowLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -99,6 +99,18 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Driving License Application Info";
+            // 
+            // llblShowLicenseInfo
+            // 
+            this.llblShowLicenseInfo.AutoSize = true;
+            this.llblShowLicenseInfo.Enabled = false;
+            this.llblShowLicenseInfo.Location = new System.Drawing.Point(75, 75);
+            this.llblShowLicenseInfo.Name = "llblShowLicenseInfo";
+            this.llblShowLicenseInfo.Size = new System.Drawing.Size(140, 20);
+            this.llblShowLicenseInfo.TabIndex = 37;
+            this.llblShowLicenseInfo.TabStop = true;
+            this.llblShowLicenseInfo.Text = "Show License Info";
+            this.llblShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblShowLicenseInfo_LinkClicked);
             // 
             // pictureBox3
             // 
@@ -225,7 +237,7 @@
             // llblViewPersonInfo
             // 
             this.llblViewPersonInfo.AutoSize = true;
-            this.llblViewPersonInfo.Location = new System.Drawing.Point(431, 170);
+            this.llblViewPersonInfo.Location = new System.Drawing.Point(524, 170);
             this.llblViewPersonInfo.Name = "llblViewPersonInfo";
             this.llblViewPersonInfo.Size = new System.Drawing.Size(129, 20);
             this.llblViewPersonInfo.TabIndex = 36;
@@ -464,18 +476,6 @@
             this.label8.Size = new System.Drawing.Size(38, 20);
             this.label8.TabIndex = 0;
             this.label8.Text = "ID :";
-            // 
-            // llblShowLicenseInfo
-            // 
-            this.llblShowLicenseInfo.AutoSize = true;
-            this.llblShowLicenseInfo.Enabled = false;
-            this.llblShowLicenseInfo.Location = new System.Drawing.Point(75, 75);
-            this.llblShowLicenseInfo.Name = "llblShowLicenseInfo";
-            this.llblShowLicenseInfo.Size = new System.Drawing.Size(140, 20);
-            this.llblShowLicenseInfo.TabIndex = 37;
-            this.llblShowLicenseInfo.TabStop = true;
-            this.llblShowLicenseInfo.Text = "Show License Info";
-            this.llblShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblShowLicenseInfo_LinkClicked);
             // 
             // ctrlLocalDrivingLicenseApplicationCard
             // 
