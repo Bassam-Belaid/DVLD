@@ -44,7 +44,18 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
+            if (!clsTestAppointment.IsHasATestAppointmentForLocalDrivingLicenseApplication(ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID(), _TestTypeTitle))
+            {
 
+            }
+
+            else 
+            {
+                MessageBox.Show("Person Already Have An Active Appointment For This Test, You Can't Add New Appointment .",
+                                    "Not Allowed",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+            }
         }
     }
 }

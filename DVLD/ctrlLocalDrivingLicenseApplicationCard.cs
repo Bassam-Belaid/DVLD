@@ -66,5 +66,10 @@ namespace DVLD
         {
 
         }
+    
+        public int GetLoadedLocalDrivingLicenseApplicationID() 
+        {
+            return _LocalDrivingApplication.GetLocalDrivingApplicationID();
+        }
     }
 }

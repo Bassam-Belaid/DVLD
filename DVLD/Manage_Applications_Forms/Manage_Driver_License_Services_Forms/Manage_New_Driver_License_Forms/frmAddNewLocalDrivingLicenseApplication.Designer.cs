@@ -330,6 +330,9 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tbcMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAddNewLocalDrivingLicenseApplication";
             this.Text = "Add New Local Driving License Application";
             this.tbcMenu.ResumeLayout(false);

@@ -59,5 +59,48 @@ namespace DVLDDataAccessLayer
             return DT;
 
         }
+
+        public static bool IsHasATestAppointmentForLocalDrivingLicenseApplication(int LDLAppID, string TestTypeTitle)
+        {
+            bool IsFound = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"SELECT IsFound = 1
+                                FROM TestAppointments INNER JOIN TestTypes 
+                                ON TestAppointments.TestTypeID = TestTypes.TestTypeID
+                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND TestTypes.TestTypeTitle = @TestTypeTitle AND TestAppointments.IsLocked = 0;";
+            
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLAppID);
+            Command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                IsFound = Reader.HasRows;
+
+                Reader.Close();
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+                IsFound = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                IsFound = false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsFound;
+        }
     }
 }
