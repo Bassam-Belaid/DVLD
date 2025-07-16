@@ -35,7 +35,7 @@ namespace DVLD.Manage_Applications_Forms.Manage_Test_Types_Forms
 
         private void editTestTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eEditTestType))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eEditTestType))
             {
                 int TestTypeID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 frmUpdateTestTypes UpdateTestTypes = new frmUpdateTestTypes(TestTypeID);

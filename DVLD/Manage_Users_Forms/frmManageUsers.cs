@@ -205,7 +205,7 @@ namespace DVLD.Manage_Users_Forms
 
         private void _AddNewUser()
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eAddNewUser))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewUser))
             {
                 frmAddEditUser AddEditUser = new frmAddEditUser();
                 AddEditUser.ShowDialog();
@@ -220,7 +220,7 @@ namespace DVLD.Manage_Users_Forms
 
         private void showDetilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowUserDetails))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowUserDetails))
             {
                 int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
@@ -239,7 +239,7 @@ namespace DVLD.Manage_Users_Forms
         {
             int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            if (clsGlobal.CurrentUser.GetUserID() == UserID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eEditUser))
+            if (clsGlobal.CurrentUser.GetUserID() == UserID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eEditUser))
             {
 
                 frmAddEditUser AddEditUser = new frmAddEditUser(UserID);
@@ -250,7 +250,7 @@ namespace DVLD.Manage_Users_Forms
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eDeleteUser))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eDeleteUser))
             {
                 int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
@@ -285,7 +285,7 @@ namespace DVLD.Manage_Users_Forms
         {
             int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            if (clsGlobal.CurrentUser.GetUserID() == UserID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eChangeUserPassword))
+            if (clsGlobal.CurrentUser.GetUserID() == UserID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eChangeUserPassword))
             {
                 string UserPassword = clsUser.GetUserPasswordByUserID(UserID);
 

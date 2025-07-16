@@ -25,7 +25,7 @@ namespace DVLD
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            if (clsUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eAddNewPerson))
+            if (clsUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewPerson))
             {
                 frmAddEditPerson AddEditPerson = new frmAddEditPerson();
                 AddEditPerson.DataBack += ShowNewPersonInfo;

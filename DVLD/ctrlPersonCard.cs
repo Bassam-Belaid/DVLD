@@ -103,7 +103,7 @@ namespace DVLD
 
         private void llblEditPersonalInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (clsGlobal.CurrentUser.PersonID == _Person.GetPersonID() || ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eEditPerson))
+            if (clsGlobal.CurrentUser.PersonID == _Person.GetPersonID() || ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eEditPerson))
             {
                 frmAddEditPerson AddEditPerson = new frmAddEditPerson(_Person.GetPersonID());
                 AddEditPerson.ShowDialog();

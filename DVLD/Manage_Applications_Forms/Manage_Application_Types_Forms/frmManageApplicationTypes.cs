@@ -34,7 +34,7 @@ namespace DVLD.Manage_Applications_Forms.Manage_Application_Types_Forms
 
         private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eEditApplicationType))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eEditApplicationType))
             {
                 int ApplicationTypeID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 frmUpdateApplicationType UpdateApplicationType = new frmUpdateApplicationType(ApplicationTypeID);

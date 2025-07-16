@@ -234,7 +234,7 @@ namespace DVLD.Manage_People_Forms
 
         private void showDetilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowPersonDetails))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowPersonDetails))
             {
                 int PersonID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
@@ -246,7 +246,7 @@ namespace DVLD.Manage_People_Forms
 
         private void _AddNewPerson()
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eAddNewPerson))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewPerson))
             {
                 frmAddEditPerson AddEditPerson = new frmAddEditPerson();
                 AddEditPerson.ShowDialog();
@@ -268,7 +268,7 @@ namespace DVLD.Manage_People_Forms
         {
             int PersonID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            if (clsGlobal.CurrentUser.PersonID == PersonID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eEditPerson))
+            if (clsGlobal.CurrentUser.PersonID == PersonID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eEditPerson))
             {
                 frmAddEditPerson AddEditPerson = new frmAddEditPerson(PersonID);
                 AddEditPerson.ShowDialog();
@@ -278,7 +278,7 @@ namespace DVLD.Manage_People_Forms
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eDeletePerson))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eDeletePerson))
             {
                 int PersonID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 

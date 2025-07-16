@@ -35,7 +35,7 @@ namespace DVLD
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowPeopleList))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowPeopleList))
             {
                 frmManagePeople frmManagePeople = new frmManagePeople();
                 frmManagePeople.ShowDialog();
@@ -49,7 +49,7 @@ namespace DVLD
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowUsersList))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowUsersList))
             {
                 frmManageUsers frmManageUsers = new frmManageUsers();
                 frmManageUsers.ShowDialog();
@@ -94,7 +94,7 @@ namespace DVLD
 
         private void manageApplicationsTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowApplicationTypesList))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowApplicationTypesList))
             {
                 frmManageApplicationTypes ManageApplicationTypes = new frmManageApplicationTypes();
                 ManageApplicationTypes.ShowDialog();
@@ -103,7 +103,7 @@ namespace DVLD
 
         private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowTestTypesList))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowTestTypesList))
             {
                 frmManageTestTypes ManageTestTypes = new frmManageTestTypes();
                 ManageTestTypes.ShowDialog();
@@ -112,7 +112,7 @@ namespace DVLD
 
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eAddNewLocalDrivingLicenseApplication))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewLocalDrivingLicenseApplication))
             {
                 frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
                 AddNewLocalDrivingLicenseApplication.ShowDialog();
@@ -121,7 +121,7 @@ namespace DVLD
 
         private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowLocalDrivingLicenseApplicationsList))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowLocalDrivingLicenseApplicationsList))
             {
             frmManageLocalDrivingLicenseApplications ManageLocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
             ManageLocalDrivingLicenseApplications.ShowDialog();

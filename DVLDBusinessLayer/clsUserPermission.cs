@@ -5,33 +5,33 @@ namespace DVLDBusinessLayer
 {
     public static class clsUserPermission
     {
-        public enum Permissions { eShowPeopleList = 1, eShowPersonDetails = 2, eAddNewPerson = 4, eEditPerson = 8, eDeletePerson = 16, eShowUsersList = 32, eShowUserDetails = 64, eAddNewUser = 128, 
+        public enum enPermissions { eShowPeopleList = 1, eShowPersonDetails = 2, eAddNewPerson = 4, eEditPerson = 8, eDeletePerson = 16, eShowUsersList = 32, eShowUserDetails = 64, eAddNewUser = 128, 
             eEditUser = 256, eDeleteUser = 512, eChangeUserPassword = 1024, eShowApplicationTypesList = 2048, eEditApplicationType = 4096, eShowTestTypesList = 8192, eEditTestType = 16384,
             eAddNewLocalDrivingLicenseApplication = 32768, eShowLocalDrivingLicenseApplicationsList = 65536, eCancelLocalDrivingLicenseApplication = 131072, eDeleteLocalDrivingLicenseApplication = 262144,
 
         };
 
-        public static readonly Dictionary<Permissions, string> PermissionDescriptions = new Dictionary<Permissions, string>
+        public static readonly Dictionary<enPermissions, string> PermissionDescriptions = new Dictionary<enPermissions, string>
         {
-            { Permissions.eShowPeopleList, "Show People List" },
-            { Permissions.eShowPersonDetails, "Show Person Details" },
-            { Permissions.eAddNewPerson, "Add New Person" },
-            { Permissions.eEditPerson, "Edit Person" },
-            { Permissions.eDeletePerson, "Delete Person" },
-            { Permissions.eShowUsersList, "Show Users List" },
-            { Permissions.eShowUserDetails, "Show User Details" },
-            { Permissions.eAddNewUser, "Add New User" },
-            { Permissions.eEditUser, "Edit User" },
-            { Permissions.eDeleteUser, "Delete User" },
-            { Permissions.eChangeUserPassword, "Change User Password" },
-            { Permissions.eShowApplicationTypesList, "Show Application Types List" },
-            { Permissions.eEditApplicationType, "Edit Application Type" },
-            { Permissions.eShowTestTypesList, "Show Test Types List" },
-            { Permissions.eEditTestType, "Edit Test Type" },
-            { Permissions.eAddNewLocalDrivingLicenseApplication, "Add New Local Driving License Application" },
-            { Permissions.eShowLocalDrivingLicenseApplicationsList, "Show Local Driving License Applications List" },
-            { Permissions.eCancelLocalDrivingLicenseApplication, "Cancel Local Driving License Application" },
-            { Permissions.eDeleteLocalDrivingLicenseApplication, "Delete Local Driving License Application" },
+            { enPermissions.eShowPeopleList, "Show People List" },
+            { enPermissions.eShowPersonDetails, "Show Person Details" },
+            { enPermissions.eAddNewPerson, "Add New Person" },
+            { enPermissions.eEditPerson, "Edit Person" },
+            { enPermissions.eDeletePerson, "Delete Person" },
+            { enPermissions.eShowUsersList, "Show Users List" },
+            { enPermissions.eShowUserDetails, "Show User Details" },
+            { enPermissions.eAddNewUser, "Add New User" },
+            { enPermissions.eEditUser, "Edit User" },
+            { enPermissions.eDeleteUser, "Delete User" },
+            { enPermissions.eChangeUserPassword, "Change User Password" },
+            { enPermissions.eShowApplicationTypesList, "Show Application Types List" },
+            { enPermissions.eEditApplicationType, "Edit Application Type" },
+            { enPermissions.eShowTestTypesList, "Show Test Types List" },
+            { enPermissions.eEditTestType, "Edit Test Type" },
+            { enPermissions.eAddNewLocalDrivingLicenseApplication, "Add New Local Driving License Application" },
+            { enPermissions.eShowLocalDrivingLicenseApplicationsList, "Show Local Driving License Applications List" },
+            { enPermissions.eCancelLocalDrivingLicenseApplication, "Cancel Local Driving License Application" },
+            { enPermissions.eDeleteLocalDrivingLicenseApplication, "Delete Local Driving License Application" },
 
         };
 
@@ -48,7 +48,7 @@ namespace DVLDBusinessLayer
            return -1;
         }
 
-        private static int _GetPermissionValue(Permissions Permission)
+        private static int _GetPermissionValue(enPermissions Permission)
         {
             int PermissionValue = (int)Permission;
             
@@ -60,7 +60,7 @@ namespace DVLDBusinessLayer
             return (clsGlobal.CurrentUser.Permissions == -1);
         }
 
-        public static bool CheckUserPermissions(Permissions Permission) 
+        public static bool CheckUserPermissions(enPermissions Permission) 
         {
             if(_IsAdmin())
                 return true;

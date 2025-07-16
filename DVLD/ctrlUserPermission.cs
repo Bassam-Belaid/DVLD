@@ -20,7 +20,7 @@ namespace DVLD
             );
         }
 
-        public static bool CheckUserPermissions(clsUserPermission.Permissions Permission)
+        public static bool CheckUserPermissions(clsUserPermission.enPermissions Permission)
         {
             if (clsUserPermission.CheckUserPermissions(Permission))
                 return true;

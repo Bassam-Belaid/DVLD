@@ -4,6 +4,7 @@ using DVLDBusinessLayer;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace DVLD.Manage_Applications_Forms
@@ -137,7 +138,7 @@ namespace DVLD.Manage_Applications_Forms
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eAddNewLocalDrivingLicenseApplication))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewLocalDrivingLicenseApplication))
             {
                  frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
                  AddNewLocalDrivingLicenseApplication.ShowDialog();
@@ -159,7 +160,7 @@ namespace DVLD.Manage_Applications_Forms
 
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eCancelLocalDrivingLicenseApplication))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eCancelLocalDrivingLicenseApplication))
             {
                 int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
@@ -191,7 +192,7 @@ namespace DVLD.Manage_Applications_Forms
 
         private void deleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eDeleteLocalDrivingLicenseApplication))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eDeleteLocalDrivingLicenseApplication))
             {
                 int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
@@ -223,53 +224,42 @@ namespace DVLD.Manage_Applications_Forms
 
         private void _DisableAllTests() 
         {
-            visionTestToolStripMenuItem.Enabled = false;
-            scheduleWrittenTestToolStripMenuItem.Enabled = false;
-            scheduleStreetTestToolStripMenuItem.Enabled = false;
+            int ScheduleTestsMenuIndex = cmsManageLocalApplications.Items.IndexOf(scheduleTestsToolStripMenuItem);
+
+            ToolStripMenuItem ScheduleTestsMenu = (ToolStripMenuItem)cmsManageLocalApplications.Items[ScheduleTestsMenuIndex];
+
+            for (byte i = 0; i < ScheduleTestsMenu.DropDownItems.Count; i++)
+            {
+                ScheduleTestsMenu.DropDownItems[i].Enabled = false;
+            }
+        }
+
+        private void _EnableSpecificTest(byte NumberOfTakenTests)
+        {
+            int ScheduleTestsMenuIndex = cmsManageLocalApplications.Items.IndexOf(scheduleTestsToolStripMenuItem);
+
+            ToolStripMenuItem ScheduleTestsMenu = (ToolStripMenuItem)cmsManageLocalApplications.Items[ScheduleTestsMenuIndex];
+
+            ScheduleTestsMenu.DropDownItems[NumberOfTakenTests].Enabled = true;
+
+            for (byte i = 0; i < ScheduleTestsMenu.DropDownItems.Count; i++)
+            {
+                if (i != NumberOfTakenTests)
+                    ScheduleTestsMenu.DropDownItems[i].Enabled = false;
+            }
         }
 
         private void _SetTestsStatus(int LocalDrivingApplicationID) 
         {
            byte NumberOfTakenTests = clsLocalDrivingApplication.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(LocalDrivingApplicationID);
 
-            if (NumberOfTakenTests == 255)
+            if (NumberOfTakenTests == 255 || NumberOfTakenTests == clsTestType.NumberOfTestTypes)
             {
-                visionTestToolStripMenuItem.Enabled = false;
-                scheduleWrittenTestToolStripMenuItem.Enabled = false;
-                scheduleStreetTestToolStripMenuItem.Enabled = false;
+                _DisableAllTests();
                 return;
             }
-            if (NumberOfTakenTests == clsTestType.NumberOfTestTypes) 
-            {
-                visionTestToolStripMenuItem.Enabled = false;
-                scheduleWrittenTestToolStripMenuItem.Enabled = false;
-                scheduleStreetTestToolStripMenuItem.Enabled = false;
-                return;
 
-            }
-            else if (NumberOfTakenTests == 0)
-            {
-                visionTestToolStripMenuItem.Enabled = true;
-                scheduleWrittenTestToolStripMenuItem.Enabled = false;
-                scheduleStreetTestToolStripMenuItem.Enabled = false;
-                return;
-
-            }
-            else if (NumberOfTakenTests == 1)
-            {
-                visionTestToolStripMenuItem.Enabled = false;
-                scheduleWrittenTestToolStripMenuItem.Enabled = true;
-                scheduleStreetTestToolStripMenuItem.Enabled = false;
-                return;
-
-            }
-            else if (NumberOfTakenTests == 2)
-            {
-                visionTestToolStripMenuItem.Enabled = false;
-                scheduleWrittenTestToolStripMenuItem.Enabled = false;
-                scheduleStreetTestToolStripMenuItem.Enabled = true;
-                return;
-            }
+            _EnableSpecificTest(NumberOfTakenTests);
         }
 
         private void scheduleTestsToolStripMenuItem_DropDownOpened(object sender, EventArgs e)

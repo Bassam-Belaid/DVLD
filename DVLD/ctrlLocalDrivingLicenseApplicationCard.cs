@@ -54,7 +54,7 @@ namespace DVLD
 
         private void llblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.Permissions.eShowPersonDetails))
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowPersonDetails))
             {
                 frmPersonDetails frmPersonDetails = new frmPersonDetails(_LocalDrivingApplication.ApplicantPersonID);
                 frmPersonDetails.ShowDialog();
