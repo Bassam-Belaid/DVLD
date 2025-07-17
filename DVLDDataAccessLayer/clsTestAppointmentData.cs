@@ -10,7 +10,7 @@ namespace DVLDDataAccessLayer
 {
     public class clsTestAppointmentData
     {
-        public static DataTable GetAllTestAppointmentsForLocalDrivingLicenseApplication(int LDLAppID, string TestTypeTitle)
+        public static DataTable GetAllTestAppointmentsForLocalDrivingLicenseApplication(int LDLAppID, int TestTypeID)
         {
 
             DataTable DT = null;
@@ -19,12 +19,12 @@ namespace DVLDDataAccessLayer
             string Query = @"SELECT TestAppointments.TestAppointmentID, TestAppointments.AppointmentDate, TestAppointments.PaidFees, TestAppointments.IsLocked
                                 FROM TestAppointments INNER JOIN TestTypes 
                                 ON TestAppointments.TestTypeID = TestTypes.TestTypeID
-                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND TestTypes.TestTypeTitle = @TestTypeTitle;";
+                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND TestTypes.TestTypeID = @TestTypeID;";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLAppID);
-            Command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+            Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
             try
             {
@@ -60,7 +60,7 @@ namespace DVLDDataAccessLayer
 
         }
 
-        public static bool IsHasATestAppointmentForLocalDrivingLicenseApplication(int LDLAppID, string TestTypeTitle)
+        public static bool IsHasATestAppointmentForLocalDrivingLicenseApplication(int LDLAppID, int TestTypeID)
         {
             bool IsFound = false;
 
@@ -69,12 +69,12 @@ namespace DVLDDataAccessLayer
             string Query = @"SELECT IsFound = 1
                                 FROM TestAppointments INNER JOIN TestTypes 
                                 ON TestAppointments.TestTypeID = TestTypes.TestTypeID
-                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND TestTypes.TestTypeTitle = @TestTypeTitle AND TestAppointments.IsLocked = 0;";
+                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND TestTypes.TestTypeID = @TestTypeID AND TestAppointments.IsLocked = 0;";
             
             SqlCommand Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLAppID);
-            Command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+            Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
             try
             {

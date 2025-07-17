@@ -101,9 +101,9 @@ namespace DVLDBusinessLayer
             return clsLocalDrivingApplicationData.DeleteLocalDrivingLicenseApplication(LDLAppID);
         }
 
-        public static byte NumberOfTestsThatTakenByLocalDrivingLicenseApplication(int LDLAppID) 
+        public static byte NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(int LDLAppID) 
         {
-            return clsLocalDrivingApplicationData.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(LDLAppID);
+            return clsLocalDrivingApplicationData.NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(LDLAppID);
         }
 
         public bool Save() 
@@ -140,6 +140,11 @@ namespace DVLDBusinessLayer
                 default:
                     return "Completed";
             }
+        }
+
+        public static bool IsLocalDrivingLicenseApplicationCanceled(int LDLAppID) 
+        {
+            return clsLocalDrivingApplicationData.IsLocalDrivingLicenseApplicationCanceled(LDLAppID);
         }
 
     }

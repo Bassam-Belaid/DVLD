@@ -10,14 +10,14 @@ namespace DVLDBusinessLayer
 {
     public class clsTestAppointment
     {
-        public static DataTable GetAllTestAppointmentsForLocalDrivingLicenseApplication(int LDLAppID, string TestTypeTitle) 
+        public static DataTable GetAllTestAppointmentsForLocalDrivingLicenseApplication(int LDLAppID, clsTestType.enTestTypes TestType) 
         {
-            return clsTestAppointmentData.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, TestTypeTitle);
+            return clsTestAppointmentData.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, (int)TestType);
         }
 
-        public static bool IsHasATestAppointmentForLocalDrivingLicenseApplication(int LDLAppID, string TestTypeTitle) 
+        public static bool IsHasATestAppointmentForLocalDrivingLicenseApplication(int LDLAppID, clsTestType.enTestTypes TestType) 
         {
-            return clsTestAppointmentData.IsHasATestAppointmentForLocalDrivingLicenseApplication(LDLAppID, TestTypeTitle);
+            return clsTestAppointmentData.IsHasATestAppointmentForLocalDrivingLicenseApplication(LDLAppID, (int)TestType);
         }
     }
 }

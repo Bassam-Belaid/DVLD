@@ -249,11 +249,22 @@ namespace DVLD.Manage_Applications_Forms
             }
         }
 
+        private bool _IsApplicantPassedAllTests(byte NumberOfTakenTests) 
+        {
+            return (NumberOfTakenTests == clsTestType.NumberOfTestTypes);
+        }
+
         private void _SetTestsStatus(int LocalDrivingApplicationID) 
         {
-           byte NumberOfTakenTests = clsLocalDrivingApplication.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(LocalDrivingApplicationID);
+            if(clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCanceled(LocalDrivingApplicationID))
+            {
+                _DisableAllTests();
+                return;
+            }
 
-            if (NumberOfTakenTests == 255 || NumberOfTakenTests == clsTestType.NumberOfTestTypes)
+            byte NumberOfTakenTests = clsLocalDrivingApplication.NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(LocalDrivingApplicationID);
+
+            if (_IsApplicantPassedAllTests(NumberOfTakenTests))
             {
                 _DisableAllTests();
                 return;

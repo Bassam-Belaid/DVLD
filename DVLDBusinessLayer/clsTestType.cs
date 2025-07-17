@@ -9,7 +9,7 @@ namespace DVLDBusinessLayer
 
         public static byte NumberOfTestTypes = 3;
 
-        //public enum enTestTypes { eVisionTest = 0, eWrittenTest = 1, eStreetTest = 2 };
+        public enum enTestTypes { eVisionTest = 1, eWrittenTest = 2, eStreetTest = 3 };
 
         private int _TestTypeID;
         private string _TestTypeTitle;

@@ -14,13 +14,11 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
     public partial class frmScheduleVisionTestAppointment : Form
     {
 
-        private static string _TestTypeTitle = "Vision Test";
-
         public frmScheduleVisionTestAppointment(int LDLAppID)
         {
             InitializeComponent();
             ctrlLocalDrivingLicenseApplicationCard1.LoadLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
-            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, _TestTypeTitle));
+            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, clsTestType.enTestTypes.eVisionTest));
         }
 
         private void _AppointmentsListForLocalDrivingLicenseApplication(DataTable dataTable)
@@ -44,7 +42,7 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            if (!clsTestAppointment.IsHasATestAppointmentForLocalDrivingLicenseApplication(ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID(), _TestTypeTitle))
+            if (!clsTestAppointment.IsHasATestAppointmentForLocalDrivingLicenseApplication(ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID(), clsTestType.enTestTypes.eVisionTest))
             {
 
             }

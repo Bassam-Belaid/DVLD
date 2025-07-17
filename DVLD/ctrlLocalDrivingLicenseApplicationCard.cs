@@ -25,7 +25,7 @@ namespace DVLD
 
         private string _NumberOfPassedTests() 
         {
-            return clsLocalDrivingApplication.NumberOfTestsThatTakenByLocalDrivingLicenseApplication(_LocalDrivingApplication.GetLocalDrivingApplicationID()).ToString() + "/" + clsTestType.NumberOfTestTypes.ToString();
+            return clsLocalDrivingApplication.NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(_LocalDrivingApplication.GetLocalDrivingApplicationID()).ToString() + "/" + clsTestType.NumberOfTestTypes.ToString();
         }
 
         private void _SetApplicantIcon(bool Gender) 

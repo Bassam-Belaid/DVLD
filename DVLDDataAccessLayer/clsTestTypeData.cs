@@ -181,5 +181,45 @@ namespace DVLDDataAccessLayer
 
             return IsFound;
         }
+
+        public static byte CountNumberOfTestTypes() 
+        {
+            byte NumberOfTestTypes = 0;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT Gender From People WHERE PersonID = @PersonID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            try
+            {
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null && byte.TryParse(Result.ToString(), out byte Count))
+                {
+                    NumberOfTestTypes = Count;
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return NumberOfTestTypes;
+        }
     }
 }

@@ -432,27 +432,16 @@ namespace DVLDDataAccessLayer
             return (RowsAffected > 0);
         }
 
-        public static byte NumberOfTestsThatTakenByLocalDrivingLicenseApplication(int LDLAppID)
+        public static byte NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(int LDLAppID)
         {
             byte NumberOfTests = 0;
 
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = @"SELECT 
-                                CASE WHEN Applications.ApplicationStatus = 1 THEN
-                                (SELECT COUNT(TestAppointments.TestTypeID) AS PassedTests
-                                                                FROM LocalDrivingLicenseApplications INNER JOIN TestAppointments 
-                                                                ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN Tests 
-                                                                ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
-                                                                WHERE (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) AND (Tests.TestResult = 1))
-                                WHEN Applications.ApplicationStatus = 2 THEN 255
-                                WHEN Applications.ApplicationStatus = 3 THEN 255
-                                END
-                                AS PassedTests
-
-                                FROM   Applications INNER JOIN LocalDrivingLicenseApplications 
-                                ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
-                                WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+            string Query = @"SELECT COUNT(TestAppointments.TestTypeID) AS PassedTests
+                                FROM TestAppointments INNER JOIN Tests 
+                                ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+                                WHERE (TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) AND (Tests.TestResult = 1)";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
 
@@ -483,6 +472,56 @@ namespace DVLDDataAccessLayer
             }
 
             return NumberOfTests;
+        }
+
+        public static bool IsLocalDrivingLicenseApplicationCanceled(int LDLAppID)
+        {
+            bool IsCanceled = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"BEGIN TRANSACTION;
+
+                            DECLARE @ApplicationID INT;
+
+                            SET @ApplicationID = (SELECT LocalDrivingLicenseApplications.ApplicationID
+				                                 FROM LocalDrivingLicenseApplications
+					                             WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)
+
+                            COMMIT TRANSACTION;
+
+                            SELECT IsCanceled = 1
+                            FROM Applications 
+                            WHERE Applications.ApplicationID = @ApplicationID AND Applications.ApplicationStatus = 2";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLAppID);
+
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                IsCanceled = Reader.HasRows;
+
+                Reader.Close();
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsCanceled;
         }
 
         public static bool GetLocalDrivingLicenseApplicationInfoByLDLAppID(int LDLAppID, ref int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate, 
