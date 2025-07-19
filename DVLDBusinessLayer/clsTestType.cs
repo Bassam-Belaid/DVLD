@@ -7,7 +7,7 @@ namespace DVLDBusinessLayer
     public class clsTestType
     {
 
-        public static byte NumberOfTestTypes = 3;
+        public static byte NumberOfTestTypes = CountNumberOfTestTypes();
 
         public enum enTestTypes { eVisionTest = 1, eWrittenTest = 2, eStreetTest = 3 };
 
@@ -56,6 +56,21 @@ namespace DVLDBusinessLayer
         public bool Save()
         {
             return clsTestTypeData.UpdateTestType(_TestTypeID, _TestTypeTitle, _TestTypeDescription, _TestTypeFees);
+        }
+
+        public static byte CountNumberOfTestTypes() 
+        {
+            return clsTestTypeData.CountNumberOfTestTypes();
+        }
+
+        public static decimal GetTestTypeFeesByTestType(enTestTypes TestType) 
+        {
+            return clsTestTypeData.GetTestTypeFeesByTestTypeID((int)TestType);
+        }
+
+        public static string GetTestTypeTitleByTestTypeID(enTestTypes TestType) 
+        {
+            return clsTestTypeData.GetTestTypeTitleByTestTypeID((int)TestType);
         }
     }
 }

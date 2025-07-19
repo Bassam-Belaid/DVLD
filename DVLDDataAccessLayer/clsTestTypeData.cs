@@ -102,6 +102,90 @@ namespace DVLDDataAccessLayer
             return IsFound;
         }
 
+        public static decimal GetTestTypeFeesByTestTypeID(int TestTypeID)
+        {
+            decimal TestTypeFees = 0;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT TestTypeFees FROM TestTypes WHERE TestTypeID = @TestTypeID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                Connection.Open();
+                
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null && decimal.TryParse(Result.ToString(), out decimal Fees))
+                {
+                    TestTypeFees = Fees;
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return TestTypeFees;
+        }
+
+        public static string GetTestTypeTitleByTestTypeID(int TestTypeID)
+        {
+            string TestTypeTitle = "";
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT TestTypeTitle FROM TestTypes WHERE TestTypeID = @TestTypeID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null)
+                {
+                    TestTypeTitle = Result.ToString();
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return TestTypeTitle;
+        }
+
         public static bool UpdateTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, decimal TestTypeFees)
         {
             int RowsAffected = 0;
@@ -188,7 +272,7 @@ namespace DVLDDataAccessLayer
 
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = "SELECT Gender From People WHERE PersonID = @PersonID;";
+            string Query = "SELECT COUNT(TestTypes.TestTypeID) AS NumberOfTests FROM TestTypes;";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
 

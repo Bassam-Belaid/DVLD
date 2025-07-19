@@ -13,7 +13,6 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
 {
     public partial class frmScheduleVisionTestAppointment : Form
     {
-
         public frmScheduleVisionTestAppointment(int LDLAppID)
         {
             InitializeComponent();
@@ -44,7 +43,8 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
         {
             if (!clsTestAppointment.IsHasATestAppointmentForLocalDrivingLicenseApplication(ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID(), clsTestType.enTestTypes.eVisionTest))
             {
-
+                frmAddEditTest AddEditTest = new frmAddEditTest(clsTestType.enTestTypes.eVisionTest, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID());
+                AddEditTest.ShowDialog();
             }
 
             else 

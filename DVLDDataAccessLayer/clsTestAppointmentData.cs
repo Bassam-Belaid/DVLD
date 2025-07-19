@@ -67,9 +67,10 @@ namespace DVLDDataAccessLayer
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string Query = @"SELECT IsFound = 1
-                                FROM TestAppointments INNER JOIN TestTypes 
-                                ON TestAppointments.TestTypeID = TestTypes.TestTypeID
-                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND TestTypes.TestTypeID = @TestTypeID AND TestAppointments.IsLocked = 0;";
+                                FROM TestAppointments 
+                                WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                                AND TestAppointments.TestTypeID = @TestTypeID 
+                                AND TestAppointments.IsLocked = 0;";
             
             SqlCommand Command = new SqlCommand(Query, Connection);
 
