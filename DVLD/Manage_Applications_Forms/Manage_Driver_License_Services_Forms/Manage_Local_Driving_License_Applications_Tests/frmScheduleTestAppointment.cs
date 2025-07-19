@@ -11,13 +11,22 @@ using DVLDBusinessLayer;
 
 namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_Local_Driving_License_Applications_Tests
 {
-    public partial class frmScheduleVisionTestAppointment : Form
+    public partial class frmScheduleTestAppointment : Form
     {
-        public frmScheduleVisionTestAppointment(int LDLAppID)
+        private clsTestType.enTestTypes _TestType;
+        private string _TestTypeTitle;
+
+        public frmScheduleTestAppointment(clsTestType.enTestTypes TestType, int LDLAppID)
         {
             InitializeComponent();
+            _TestType = TestType;
+            _TestTypeTitle = clsTestType.GetTestTypeTitleByTestTypeID(_TestType);
+            _TestTypeTitle = "Schedule " + _TestTypeTitle + " Appointments";
+            this.Text = _TestTypeTitle;
+            lblTestAppointmentTitle.Text = _TestTypeTitle;
+            _SetTestTypeDetails();
             ctrlLocalDrivingLicenseApplicationCard1.LoadLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
-            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, clsTestType.enTestTypes.eVisionTest));
+            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, _TestType));
         }
 
         private void _AppointmentsListForLocalDrivingLicenseApplication(DataTable dataTable)
@@ -53,6 +62,21 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
                                     "Not Allowed",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
+            }
+        }
+
+        private void _LoadVisionTest()
+        {
+            pbxTestIcon.Image = Properties.Resources.Vision_Test_2;
+        }
+
+        private void _SetTestTypeDetails()
+        {
+            switch (_TestType)
+            {
+                case clsTestType.enTestTypes.eVisionTest:
+                    _LoadVisionTest();
+                    break;
             }
         }
     }

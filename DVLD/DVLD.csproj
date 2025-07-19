@@ -130,11 +130,11 @@
     <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmAddEditTest.Designer.cs">
       <DependentUpon>frmAddEditTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmScheduleVisionTestAppointment.cs">
+    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmScheduleTestAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmScheduleVisionTestAppointment.Designer.cs">
-      <DependentUpon>frmScheduleVisionTestAppointment.cs</DependentUpon>
+    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmScheduleTestAppointment.Designer.cs">
+      <DependentUpon>frmScheduleTestAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_New_Driver_License_Forms\frmAddNewLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
@@ -237,8 +237,8 @@
     <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmAddEditTest.resx">
       <DependentUpon>frmAddEditTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmScheduleVisionTestAppointment.resx">
-      <DependentUpon>frmScheduleVisionTestAppointment.cs</DependentUpon>
+    <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmScheduleTestAppointment.resx">
+      <DependentUpon>frmScheduleTestAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_New_Driver_License_Forms\frmAddNewLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddNewLocalDrivingLicenseApplication.cs</DependentUpon>

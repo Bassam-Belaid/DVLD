@@ -283,8 +283,8 @@ namespace DVLD.Manage_Applications_Forms
         {
             int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            frmScheduleVisionTestAppointment ScheduleVisionTestAppointment = new frmScheduleVisionTestAppointment(LocalDrivingApplicationID);
-            ScheduleVisionTestAppointment.ShowDialog();
+            frmScheduleTestAppointment ScheduleTestAppointment = new frmScheduleTestAppointment(clsTestType.enTestTypes.eVisionTest, LocalDrivingApplicationID);
+            ScheduleTestAppointment.ShowDialog();
             _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
         }
 
