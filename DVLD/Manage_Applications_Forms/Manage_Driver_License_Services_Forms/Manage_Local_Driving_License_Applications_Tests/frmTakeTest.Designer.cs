@@ -1,6 +1,6 @@
 ﻿namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_Local_Driving_License_Applications_Tests
 {
-    partial class frmAddEditTest
+    partial class frmTakeTest
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnClose = new System.Windows.Forms.Button();
             this.gpxTestType = new System.Windows.Forms.GroupBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.lblTestID = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblTestDate = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblTestFees = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dtpTestDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.lblTrials = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -50,18 +53,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pbxTestIcon = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.gbxRetakeTestInfo = new System.Windows.Forms.GroupBox();
-            this.lblRetakeTestFees = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.lblTotalFees = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.rdbPass = new System.Windows.Forms.RadioButton();
+            this.rdbFail = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.lblRetakeAppID = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.gpxTestType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -69,21 +70,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTestIcon)).BeginInit();
-            this.gbxRetakeTestInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackgroundImage = global::DVLD.Properties.Resources.Close;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(239, 614);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(147, 38);
+            this.btnClose.TabIndex = 78;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // gpxTestType
             // 
-            this.gpxTestType.Controls.Add(this.gbxRetakeTestInfo);
-            this.gpxTestType.Controls.Add(this.btnSave);
+            this.gpxTestType.Controls.Add(this.lblTestID);
+            this.gpxTestType.Controls.Add(this.pictureBox8);
+            this.gpxTestType.Controls.Add(this.label11);
+            this.gpxTestType.Controls.Add(this.lblTestDate);
             this.gpxTestType.Controls.Add(this.pictureBox4);
             this.gpxTestType.Controls.Add(this.lblTestFees);
             this.gpxTestType.Controls.Add(this.pictureBox7);
             this.gpxTestType.Controls.Add(this.label7);
-            this.gpxTestType.Controls.Add(this.dtpTestDate);
             this.gpxTestType.Controls.Add(this.label4);
             this.gpxTestType.Controls.Add(this.lblTrials);
             this.gpxTestType.Controls.Add(this.pictureBox2);
@@ -102,24 +116,48 @@
             this.gpxTestType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpxTestType.Location = new System.Drawing.Point(12, 12);
             this.gpxTestType.Name = "gpxTestType";
-            this.gpxTestType.Size = new System.Drawing.Size(614, 596);
-            this.gpxTestType.TabIndex = 0;
+            this.gpxTestType.Size = new System.Drawing.Size(540, 440);
+            this.gpxTestType.TabIndex = 77;
             this.gpxTestType.TabStop = false;
             this.gpxTestType.Text = "groupBox1";
             // 
-            // btnSave
+            // lblTestID
             // 
-            this.btnSave.BackgroundImage = global::DVLD.Properties.Resources.Save;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(387, 552);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(147, 38);
-            this.btnSave.TabIndex = 73;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.lblTestID.AutoSize = true;
+            this.lblTestID.Location = new System.Drawing.Point(172, 398);
+            this.lblTestID.Name = "lblTestID";
+            this.lblTestID.Size = new System.Drawing.Size(36, 20);
+            this.lblTestID.TabIndex = 45;
+            this.lblTestID.Text = "???";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::DVLD.Properties.Resources.National_Number;
+            this.pictureBox8.Location = new System.Drawing.Point(131, 398);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(26, 20);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 44;
+            this.pictureBox8.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(39, 398);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 20);
+            this.label11.TabIndex = 43;
+            this.label11.Text = "Test ID :";
+            // 
+            // lblTestDate
+            // 
+            this.lblTestDate.AutoSize = true;
+            this.lblTestDate.Location = new System.Drawing.Point(171, 323);
+            this.lblTestDate.Name = "lblTestDate";
+            this.lblTestDate.Size = new System.Drawing.Size(36, 20);
+            this.lblTestDate.TabIndex = 42;
+            this.lblTestDate.Text = "???";
             // 
             // pictureBox4
             // 
@@ -159,15 +197,6 @@
             this.label7.Size = new System.Drawing.Size(59, 20);
             this.label7.TabIndex = 38;
             this.label7.Text = "Fees :";
-            // 
-            // dtpTestDate
-            // 
-            this.dtpTestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTestDate.Location = new System.Drawing.Point(175, 320);
-            this.dtpTestDate.Name = "dtpTestDate";
-            this.dtpTestDate.Size = new System.Drawing.Size(162, 26);
-            this.dtpTestDate.TabIndex = 37;
-            this.dtpTestDate.ValueChanged += new System.EventHandler(this.dtpTestDate_ValueChanged);
             // 
             // label4
             // 
@@ -297,7 +326,7 @@
             // 
             // pbxTestIcon
             // 
-            this.pbxTestIcon.Location = new System.Drawing.Point(282, 25);
+            this.pbxTestIcon.Location = new System.Drawing.Point(245, 25);
             this.pbxTestIcon.Name = "pbxTestIcon";
             this.pbxTestIcon.Size = new System.Drawing.Size(74, 64);
             this.pbxTestIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -309,146 +338,121 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(212, 102);
+            this.label1.Location = new System.Drawing.Point(175, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(214, 33);
             this.label1.TabIndex = 15;
             this.label1.Text = "Schedule Test";
             // 
-            // btnClose
+            // btnSave
             // 
-            this.btnClose.BackgroundImage = global::DVLD.Properties.Resources.Close;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(202, 614);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(147, 38);
-            this.btnClose.TabIndex = 76;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // gbxRetakeTestInfo
-            // 
-            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox8);
-            this.gbxRetakeTestInfo.Controls.Add(this.lblRetakeAppID);
-            this.gbxRetakeTestInfo.Controls.Add(this.label13);
-            this.gbxRetakeTestInfo.Controls.Add(this.lblTotalFees);
-            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox6);
-            this.gbxRetakeTestInfo.Controls.Add(this.label11);
-            this.gbxRetakeTestInfo.Controls.Add(this.lblRetakeTestFees);
-            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox5);
-            this.gbxRetakeTestInfo.Controls.Add(this.label8);
-            this.gbxRetakeTestInfo.Enabled = false;
-            this.gbxRetakeTestInfo.Location = new System.Drawing.Point(13, 407);
-            this.gbxRetakeTestInfo.Name = "gbxRetakeTestInfo";
-            this.gbxRetakeTestInfo.Size = new System.Drawing.Size(595, 126);
-            this.gbxRetakeTestInfo.TabIndex = 74;
-            this.gbxRetakeTestInfo.TabStop = false;
-            this.gbxRetakeTestInfo.Text = "Retake Test Info";
-            // 
-            // lblRetakeTestFees
-            // 
-            this.lblRetakeTestFees.AutoSize = true;
-            this.lblRetakeTestFees.Location = new System.Drawing.Point(173, 38);
-            this.lblRetakeTestFees.Name = "lblRetakeTestFees";
-            this.lblRetakeTestFees.Size = new System.Drawing.Size(18, 20);
-            this.lblRetakeTestFees.TabIndex = 43;
-            this.lblRetakeTestFees.Text = "0";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::DVLD.Properties.Resources.Fees;
-            this.pictureBox5.Location = new System.Drawing.Point(142, 38);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(26, 20);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 42;
-            this.pictureBox5.TabStop = false;
+            this.btnSave.BackgroundImage = global::DVLD.Properties.Resources.Save;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(405, 614);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(147, 38);
+            this.btnSave.TabIndex = 73;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(23, 38);
+            this.label8.Location = new System.Drawing.Point(30, 460);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(114, 20);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "R.App.Fees :";
+            this.label8.Size = new System.Drawing.Size(71, 20);
+            this.label8.TabIndex = 43;
+            this.label8.Text = "Result :";
             // 
-            // lblTotalFees
+            // pictureBox5
             // 
-            this.lblTotalFees.AutoSize = true;
-            this.lblTotalFees.Location = new System.Drawing.Point(473, 38);
-            this.lblTotalFees.Name = "lblTotalFees";
-            this.lblTotalFees.Size = new System.Drawing.Size(36, 20);
-            this.lblTotalFees.TabIndex = 46;
-            this.lblTotalFees.Text = "???";
+            this.pictureBox5.Image = global::DVLD.Properties.Resources.National_Number;
+            this.pictureBox5.Location = new System.Drawing.Point(107, 460);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(26, 20);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 79;
+            this.pictureBox5.TabStop = false;
+            // 
+            // rdbPass
+            // 
+            this.rdbPass.AutoSize = true;
+            this.rdbPass.Checked = true;
+            this.rdbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbPass.Location = new System.Drawing.Point(155, 458);
+            this.rdbPass.Name = "rdbPass";
+            this.rdbPass.Size = new System.Drawing.Size(62, 24);
+            this.rdbPass.TabIndex = 80;
+            this.rdbPass.TabStop = true;
+            this.rdbPass.Text = "Pass";
+            this.rdbPass.UseVisualStyleBackColor = true;
+            // 
+            // rdbFail
+            // 
+            this.rdbFail.AutoSize = true;
+            this.rdbFail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbFail.Location = new System.Drawing.Point(239, 458);
+            this.rdbFail.Name = "rdbFail";
+            this.rdbFail.Size = new System.Drawing.Size(52, 24);
+            this.rdbFail.TabIndex = 81;
+            this.rdbFail.Text = "Fail";
+            this.rdbFail.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(35, 510);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 20);
+            this.label6.TabIndex = 82;
+            this.label6.Text = "Notes :";
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::DVLD.Properties.Resources.Fees;
-            this.pictureBox6.Location = new System.Drawing.Point(437, 38);
+            this.pictureBox6.Image = global::DVLD.Properties.Resources.Title;
+            this.pictureBox6.Location = new System.Drawing.Point(107, 512);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(26, 20);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 45;
+            this.pictureBox6.TabIndex = 83;
             this.pictureBox6.TabStop = false;
             // 
-            // label11
+            // txtNotes
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(323, 38);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(104, 20);
-            this.label11.TabIndex = 44;
-            this.label11.Text = "Total Fees :";
+            this.txtNotes.Location = new System.Drawing.Point(154, 512);
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(388, 92);
+            this.txtNotes.TabIndex = 84;
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::DVLD.Properties.Resources.National_Number;
-            this.pictureBox8.Location = new System.Drawing.Point(142, 77);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(26, 20);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 49;
-            this.pictureBox8.TabStop = false;
-            // 
-            // lblRetakeAppID
-            // 
-            this.lblRetakeAppID.AutoSize = true;
-            this.lblRetakeAppID.Location = new System.Drawing.Point(173, 77);
-            this.lblRetakeAppID.Name = "lblRetakeAppID";
-            this.lblRetakeAppID.Size = new System.Drawing.Size(36, 20);
-            this.lblRetakeAppID.TabIndex = 48;
-            this.lblRetakeAppID.Text = "???";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(44, 77);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 20);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "R.App ID :";
-            // 
-            // frmAddEditTest
+            // frmTakeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 664);
+            this.ClientSize = new System.Drawing.Size(564, 664);
+            this.Controls.Add(this.txtNotes);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.rdbFail);
+            this.Controls.Add(this.rdbPass);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.gpxTestType);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmAddEditTest";
-            this.Text = "Add / Edit Test";
+            this.Name = "frmTakeTest";
+            this.Text = "frmTakeTest";
             this.gpxTestType.ResumeLayout(false);
             this.gpxTestType.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -456,49 +460,47 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTestIcon)).EndInit();
-            this.gbxRetakeTestInfo.ResumeLayout(false);
-            this.gbxRetakeTestInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox gpxTestType;
-        private System.Windows.Forms.PictureBox pbxTestIcon;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label lblDLAppID;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblLicenseClass;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTestDate;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblTestFees;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTrials;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblApplicantName;
         private System.Windows.Forms.PictureBox pbxApplicant;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dtpTestDate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label lblTestFees;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblLicenseClass;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label lblDLAppID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pbxTestIcon;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.GroupBox gbxRetakeTestInfo;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label lblRetakeAppID;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lblTotalFees;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lblRetakeTestFees;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblTestID;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.RadioButton rdbPass;
+        private System.Windows.Forms.RadioButton rdbFail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.TextBox txtNotes;
     }
 }

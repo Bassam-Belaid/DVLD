@@ -28,18 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTestAppointmentTitle = new System.Windows.Forms.Label();
             this.pbxTestIcon = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmsManageTestAppointments = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.takeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblNumberOfRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ctrlLocalDrivingLicenseApplicationCard1 = new DVLD.ctrlLocalDrivingLicenseApplicationCard();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.ctrlLocalDrivingLicenseApplicationCard1 = new DVLD.ctrlLocalDrivingLicenseApplicationCard();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTestIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cmsManageTestAppointments.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTestAppointmentTitle
@@ -70,15 +75,43 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.cmsManageTestAppointments;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.Location = new System.Drawing.Point(26, 541);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(982, 188);
             this.dataGridView1.TabIndex = 16;
+            // 
+            // cmsManageTestAppointments
+            // 
+            this.cmsManageTestAppointments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.takeTestToolStripMenuItem});
+            this.cmsManageTestAppointments.Name = "cmsManageTestAppointments";
+            this.cmsManageTestAppointments.Size = new System.Drawing.Size(171, 144);
+            this.cmsManageTestAppointments.Opening += new System.ComponentModel.CancelEventHandler(this.cmsManageTestAppointments_Opening);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.Manage_Applications_Types;
+            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(170, 70);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // takeTestToolStripMenuItem
+            // 
+            this.takeTestToolStripMenuItem.Image = global::DVLD.Properties.Resources.Manage_Tests_Types;
+            this.takeTestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
+            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(170, 70);
+            this.takeTestToolStripMenuItem.Text = "Take Test";
+            this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
             // 
             // btnClose
             // 
@@ -114,13 +147,6 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "# Records";
             // 
-            // ctrlLocalDrivingLicenseApplicationCard1
-            // 
-            this.ctrlLocalDrivingLicenseApplicationCard1.Location = new System.Drawing.Point(132, 141);
-            this.ctrlLocalDrivingLicenseApplicationCard1.Name = "ctrlLocalDrivingLicenseApplicationCard1";
-            this.ctrlLocalDrivingLicenseApplicationCard1.Size = new System.Drawing.Size(770, 350);
-            this.ctrlLocalDrivingLicenseApplicationCard1.TabIndex = 0;
-            // 
             // btnAddNew
             // 
             this.btnAddNew.BackgroundImage = global::DVLD.Properties.Resources.Calendar;
@@ -144,7 +170,14 @@
             this.label3.TabIndex = 23;
             this.label3.Text = "Appointments";
             // 
-            // frmScheduleVisionTestAppointment
+            // ctrlLocalDrivingLicenseApplicationCard1
+            // 
+            this.ctrlLocalDrivingLicenseApplicationCard1.Location = new System.Drawing.Point(132, 141);
+            this.ctrlLocalDrivingLicenseApplicationCard1.Name = "ctrlLocalDrivingLicenseApplicationCard1";
+            this.ctrlLocalDrivingLicenseApplicationCard1.Size = new System.Drawing.Size(770, 350);
+            this.ctrlLocalDrivingLicenseApplicationCard1.TabIndex = 0;
+            // 
+            // frmScheduleTestAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,10 +194,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmScheduleVisionTestAppointment";
+            this.Name = "frmScheduleTestAppointment";
             this.Text = "Schedule Test Type Appointments";
             ((System.ComponentModel.ISupportInitialize)(this.pbxTestIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.cmsManageTestAppointments.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +215,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ContextMenuStrip cmsManageTestAppointments;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem takeTestToolStripMenuItem;
     }
 }

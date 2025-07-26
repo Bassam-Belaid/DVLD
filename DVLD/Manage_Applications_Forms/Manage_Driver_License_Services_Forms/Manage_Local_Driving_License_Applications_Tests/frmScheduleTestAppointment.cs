@@ -24,9 +24,17 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
             _TestTypeTitle = "Schedule " + _TestTypeTitle + " Appointments";
             this.Text = _TestTypeTitle;
             lblTestAppointmentTitle.Text = _TestTypeTitle;
-            _SetTestTypeDetails();
+
+            int labelWidth = lblTestAppointmentTitle.Width;
+            int otherControlWidth = pbxTestIcon.Width;
+
+            int newX = pbxTestIcon.Left + (otherControlWidth / 2) - (labelWidth / 2);
+
+            lblTestAppointmentTitle.Location = new Point(newX, lblTestAppointmentTitle.Top);
+
+            _LoadTestTypeIcon();
             ctrlLocalDrivingLicenseApplicationCard1.LoadLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
-            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(LDLAppID, _TestType));
+            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(_TestType, LDLAppID));
         }
 
         private void _AppointmentsListForLocalDrivingLicenseApplication(DataTable dataTable)
@@ -50,34 +58,92 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            if (!clsTestAppointment.IsHasATestAppointmentForLocalDrivingLicenseApplication(ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID(), clsTestType.enTestTypes.eVisionTest))
+            if (!clsTestAppointment.IsHasPassedTestForLocalDrivingLicenseApplication(_TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID()))
             {
-                frmAddEditTest AddEditTest = new frmAddEditTest(clsTestType.enTestTypes.eVisionTest, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID());
-                AddEditTest.ShowDialog();
+                if (!clsTestAppointment.IsHasATestAppointmentForLocalDrivingLicenseApplication(_TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID()))
+                {
+                    frmAddEditTest AddEditTest = new frmAddEditTest(frmAddEditTest.enMode.eAddNew, _TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID());
+                    AddEditTest.ShowDialog();
+                    _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(_TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID()));
+                }
+
+                else
+                {
+                    MessageBox.Show("Person Already Have An Active Appointment For This Test, You Can't Add New Appointment.",
+                                        "Not Allowed",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                }
             }
 
-            else 
+            else
             {
-                MessageBox.Show("Person Already Have An Active Appointment For This Test, You Can't Add New Appointment .",
+                MessageBox.Show("Person Already Have Passed The Test, You Can't Add New Appointment.",
                                     "Not Allowed",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
             }
         }
 
-        private void _LoadVisionTest()
-        {
-            pbxTestIcon.Image = Properties.Resources.Vision_Test_2;
-        }
-
-        private void _SetTestTypeDetails()
+        private void _LoadTestTypeIcon()
         {
             switch (_TestType)
             {
                 case clsTestType.enTestTypes.eVisionTest:
-                    _LoadVisionTest();
+                    pbxTestIcon.Image = Properties.Resources.Vision_Test_2;
+                    break;
+
+                case clsTestType.enTestTypes.eWrittenTest:
+                    pbxTestIcon.Image = Properties.Resources.Written_Test;
+                    break;
+
+                case clsTestType.enTestTypes.eStreetTest:
+                    pbxTestIcon.Image = Properties.Resources.Street_Test;
                     break;
             }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditTest AddEditTest = new frmAddEditTest(frmAddEditTest.enMode.eUpdate, _TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID());
+            AddEditTest.ShowDialog();
+            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(_TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID()));
+        }
+
+        private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int TestAppointmentID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmTakeTest TakeTest = new frmTakeTest(_TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID(), TestAppointmentID);
+            TakeTest.ShowDialog();
+            _AppointmentsListForLocalDrivingLicenseApplication(clsTestAppointment.GetAllTestAppointmentsForLocalDrivingLicenseApplication(_TestType, ctrlLocalDrivingLicenseApplicationCard1.GetLoadedLocalDrivingLicenseApplicationID()));
+            ctrlLocalDrivingLicenseApplicationCard1.Refresh();
+        }
+
+        private void _EnableTestAppointmentsMenuConfig()
+        {
+            for (byte i = 0; i < cmsManageTestAppointments.Items.Count; i++)
+            {
+                cmsManageTestAppointments.Items[i].Enabled = true;
+            }
+        }
+
+        private void _DisableTestAppointmentsMenuConfig()
+        {
+            for (byte i = 0; i < cmsManageTestAppointments.Items.Count; i++)
+            {
+                cmsManageTestAppointments.Items[i].Enabled = false;
+            }
+        }
+
+        private void cmsManageTestAppointments_Opening(object sender, CancelEventArgs e)
+        {
+            int TestAppointmentID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            if (!clsTestAppointment.IsTestAppointmentForLocalDrivingLicenseApplicationIsActive(TestAppointmentID))
+                _DisableTestAppointmentsMenuConfig();
+            else
+                _EnableTestAppointmentsMenuConfig();
         }
     }
 }

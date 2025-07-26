@@ -290,12 +290,20 @@ namespace DVLD.Manage_Applications_Forms
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
+            frmScheduleTestAppointment ScheduleTestAppointment = new frmScheduleTestAppointment(clsTestType.enTestTypes.eWrittenTest, LocalDrivingApplicationID);
+            ScheduleTestAppointment.ShowDialog();
+            _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
         }
 
         private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
+            frmScheduleTestAppointment ScheduleTestAppointment = new frmScheduleTestAppointment(clsTestType.enTestTypes.eStreetTest, LocalDrivingApplicationID);
+            ScheduleTestAppointment.ShowDialog();
+            _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
         }
     }
 }

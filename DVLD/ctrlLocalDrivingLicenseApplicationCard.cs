@@ -69,7 +69,17 @@ namespace DVLD
     
         public int GetLoadedLocalDrivingLicenseApplicationID() 
         {
-            return _LocalDrivingApplication.GetLocalDrivingApplicationID();
+            int LocalDrivingApplicationID = _LocalDrivingApplication.GetLocalDrivingApplicationID();
+            
+            if (LocalDrivingApplicationID != -1)
+                return LocalDrivingApplicationID;
+            
+            return -1;
+        }
+
+        public void Refresh() 
+        {
+            lblPassedTests.Text = _NumberOfPassedTests();
         }
     }
 }
