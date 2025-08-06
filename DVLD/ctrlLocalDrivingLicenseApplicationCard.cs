@@ -14,18 +14,18 @@ namespace DVLD
 {
     public partial class ctrlLocalDrivingLicenseApplicationCard : UserControl
     {
-        private clsLocalDrivingApplication _LocalDrivingApplication;
+        public clsLocalDrivingApplication LocalDrivingApplication;
 
         public ctrlLocalDrivingLicenseApplicationCard()
         {
             InitializeComponent();
 
-            _LocalDrivingApplication = null;
+            LocalDrivingApplication = null;
         }
 
         private string _NumberOfPassedTests() 
         {
-            return clsLocalDrivingApplication.NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(_LocalDrivingApplication.GetLocalDrivingApplicationID()).ToString() + "/" + clsTestType.NumberOfTestTypes.ToString();
+            return clsLocalDrivingApplication.NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(LocalDrivingApplication.GetLocalDrivingApplicationID()).ToString() + "/" + clsTestType.NumberOfTestTypes.ToString();
         }
 
         private void _SetApplicantIcon(bool Gender) 
@@ -35,30 +35,30 @@ namespace DVLD
 
         public void LoadLocalDrivingLicenseApplicationInfoByLDLAppID(int LDLAppID) 
         {
-            _LocalDrivingApplication = clsLocalDrivingApplication.GetLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
+            LocalDrivingApplication = clsLocalDrivingApplication.GetLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
 
             lblDLAppID.Text = LDLAppID.ToString();
-            lblLicenseClass.Text = clsLicenseClass.GetLicenseClassNameByLicenseClassID(_LocalDrivingApplication.LicenseClassID);
+            lblLicenseClass.Text = clsLicenseClass.GetLicenseClassNameByLicenseClassID(LocalDrivingApplication.LicenseClassID);
             lblPassedTests.Text = _NumberOfPassedTests();
 
-            lblApplicationID.Text = _LocalDrivingApplication.GetApplicationID().ToString();
-            lblApplicationStatus.Text = _LocalDrivingApplication.GetApplicationStatus();
-            lblApplicationFees.Text = _LocalDrivingApplication.PaidFees.ToString();
-            lblApplicationType.Text = clsApplicationType.GetApplicationTypeTitleByApplicationTypeID(_LocalDrivingApplication.ApplicationTypeID);
-            lblApplicant.Text = clsPerson.GetPersonFullNameByPersonID(_LocalDrivingApplication.ApplicantPersonID);
-            lblApplicationDate.Text = _LocalDrivingApplication.ApplicationDate.ToString("dd/MM/yyyy");
-            lblLastStatusDate.Text = _LocalDrivingApplication.LastStatusDate.ToString("dd/MM/yyyy");
-            lblCreatedBy.Text = clsUser.GetUserNameByUserID(_LocalDrivingApplication.CreatedByUserID);
-            _SetApplicantIcon(clsPerson.GetPersonGenderByPersonID(_LocalDrivingApplication.ApplicantPersonID));
+            lblApplicationID.Text = LocalDrivingApplication.GetApplicationID().ToString();
+            lblApplicationStatus.Text = LocalDrivingApplication.GetApplicationStatus();
+            lblApplicationFees.Text = LocalDrivingApplication.PaidFees.ToString();
+            lblApplicationType.Text = clsApplicationType.GetApplicationTypeTitleByApplicationTypeID(LocalDrivingApplication.ApplicationTypeID);
+            lblApplicant.Text = clsPerson.GetPersonFullNameByPersonID(LocalDrivingApplication.ApplicantPersonID);
+            lblApplicationDate.Text = LocalDrivingApplication.ApplicationDate.ToString("dd/MM/yyyy");
+            lblLastStatusDate.Text = LocalDrivingApplication.LastStatusDate.ToString("dd/MM/yyyy");
+            lblCreatedBy.Text = clsUser.GetUserNameByUserID(LocalDrivingApplication.CreatedByUserID);
+            _SetApplicantIcon(clsPerson.GetPersonGenderByPersonID(LocalDrivingApplication.ApplicantPersonID));
         }
 
         private void llblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowPersonDetails))
             {
-                frmPersonDetails frmPersonDetails = new frmPersonDetails(_LocalDrivingApplication.ApplicantPersonID);
+                frmPersonDetails frmPersonDetails = new frmPersonDetails(LocalDrivingApplication.ApplicantPersonID);
                 frmPersonDetails.ShowDialog();
-                LoadLocalDrivingLicenseApplicationInfoByLDLAppID(_LocalDrivingApplication.GetLocalDrivingApplicationID());
+                LoadLocalDrivingLicenseApplicationInfoByLDLAppID(LocalDrivingApplication.GetLocalDrivingApplicationID());
             }
         }
 
@@ -69,7 +69,7 @@ namespace DVLD
     
         public int GetLoadedLocalDrivingLicenseApplicationID() 
         {
-            int LocalDrivingApplicationID = _LocalDrivingApplication.GetLocalDrivingApplicationID();
+            int LocalDrivingApplicationID = LocalDrivingApplication.GetLocalDrivingApplicationID();
             
             if (LocalDrivingApplicationID != -1)
                 return LocalDrivingApplicationID;

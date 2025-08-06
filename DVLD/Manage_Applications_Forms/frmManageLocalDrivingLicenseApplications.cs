@@ -1,4 +1,5 @@
-﻿using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_Local_Driving_License_Applications_Tests;
+﻿using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms;
+using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_Local_Driving_License_Applications_Tests;
 using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms;
 using DVLDBusinessLayer;
 using System;
@@ -275,7 +276,13 @@ namespace DVLD.Manage_Applications_Forms
 
         private void _SetApplicationMenuStatus(int LocalDrivingApplicationID) 
         {
-            if(clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCanceled(LocalDrivingApplicationID))
+            if (clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCompleted(LocalDrivingApplicationID))
+                deleToolStripMenuItem.Enabled = false;
+            else
+                deleToolStripMenuItem.Enabled = true;
+
+
+            if (clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCanceled(LocalDrivingApplicationID) || clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCompleted(LocalDrivingApplicationID))
             {
                 editApplicationToolStripMenuItem.Enabled = false;
                 cancelToolStripMenuItem.Enabled = false;
@@ -292,9 +299,11 @@ namespace DVLD.Manage_Applications_Forms
 
             byte NumberOfTakenTests = clsLocalDrivingApplication.NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(LocalDrivingApplicationID);
 
-            if (_IsApplicantPassedAllTests(NumberOfTakenTests))
+            if (_IsApplicantPassedAllTests(NumberOfTakenTests)) 
+            { 
                 issueDrivingLicensefirstTimeToolStripMenuItem.Enabled = true;
-            
+                scheduleTestsToolStripMenuItem.Enabled = false;
+            }
 
             else
                 issueDrivingLicensefirstTimeToolStripMenuItem.Enabled = false;
@@ -324,7 +333,7 @@ namespace DVLD.Manage_Applications_Forms
             ScheduleTestAppointment.ShowDialog();
             _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
         }
-
+        
         private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
@@ -336,7 +345,11 @@ namespace DVLD.Manage_Applications_Forms
 
         private void issueDrivingLicensefirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
+            frmIssueDrivingLicenseFirstTime IssueDrivingLicenseFirstTime = new frmIssueDrivingLicenseFirstTime(LocalDrivingApplicationID);
+            IssueDrivingLicenseFirstTime.ShowDialog();
+            _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
         }
 
         private void cmsManageLocalApplications_Opened(object sender, EventArgs e)

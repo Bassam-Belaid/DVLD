@@ -573,6 +573,56 @@ namespace DVLDDataAccessLayer
             return IsCanceled;
         }
 
+        public static bool IsLocalDrivingLicenseApplicationCompleted(int LDLAppID)
+        {
+            bool IsCanceled = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"BEGIN TRANSACTION;
+
+                            DECLARE @ApplicationID INT;
+
+                            SET @ApplicationID = (SELECT LocalDrivingLicenseApplications.ApplicationID
+				                                 FROM LocalDrivingLicenseApplications
+					                             WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)
+
+                            COMMIT TRANSACTION;
+
+                            SELECT IsCanceled = 1
+                            FROM Applications 
+                            WHERE Applications.ApplicationID = @ApplicationID AND Applications.ApplicationStatus = 3";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLAppID);
+
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                IsCanceled = Reader.HasRows;
+
+                Reader.Close();
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsCanceled;
+        }
+
         public static bool GetLocalDrivingLicenseApplicationInfoByLDLAppID(int LDLAppID, ref int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate, 
             ref byte ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID, ref int LicenseClassID)
         {

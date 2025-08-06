@@ -173,5 +173,10 @@ namespace DVLDBusinessLayer
         {
             return clsLocalDrivingApplicationData.IsLocalDrivingLicenseApplicationCanceled(LDLAppID);
         }
+
+        public static bool IsLocalDrivingLicenseApplicationCompleted(int LDLAppID) 
+        {
+            return clsLocalDrivingApplicationData.IsLocalDrivingLicenseApplicationCompleted(LDLAppID);
+        }
     }
 }

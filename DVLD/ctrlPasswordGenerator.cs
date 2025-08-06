@@ -11,6 +11,7 @@ namespace DVLD
         public ctrlPasswordGenerator()
         {
             InitializeComponent();
+            Password = "";
             nudPasswordLength.Minimum = clsPasswordGenerator.GetMinimumPasswordLength();
             nudPasswordLength.Maximum = clsPasswordGenerator.GetMaximumPasswordLength();
         }
