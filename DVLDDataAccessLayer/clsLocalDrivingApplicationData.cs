@@ -70,6 +70,55 @@ namespace DVLDDataAccessLayer
             return LocalDrivingApplicationID;
         }
 
+        public static bool UpdateLocalDrivingApplication(int LDLAppID, int LicenseClassID, int CreatedByUserID)
+        {
+            int RowsAffected = 0;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"BEGIN TRANSACTION;
+
+                                UPDATE LocalDrivingLicenseApplications
+                                SET LicenseClassID = @LicenseClassID
+                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;
+
+                                DECLARE @ApplicationID INT;
+
+                                SET @ApplicationID = (SELECT ApplicationID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID);
+
+                                UPDATE Applications
+                                SET CreatedByUserID = @CreatedByUserID
+                                WHERE ApplicationID = @ApplicationID;
+
+                            COMMIT TRANSACTION;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLAppID);
+            Command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+            try
+            {
+                Connection.Open();
+                RowsAffected = Command.ExecuteNonQuery();
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return (RowsAffected > 0);
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplications()
         {
 

@@ -1,6 +1,6 @@
 ﻿namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms
 {
-    partial class frmAddNewLocalDrivingLicenseApplication
+    partial class frmAddEditLocalDrivingLicenseApplication
     {
         /// <summary>
         /// Required designer variable.

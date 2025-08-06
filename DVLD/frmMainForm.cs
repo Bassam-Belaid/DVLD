@@ -114,7 +114,7 @@ namespace DVLD
         {
             if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewLocalDrivingLicenseApplication))
             {
-                frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
+                frmAddEditLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddEditLocalDrivingLicenseApplication();
                 AddNewLocalDrivingLicenseApplication.ShowDialog();
             }
         }

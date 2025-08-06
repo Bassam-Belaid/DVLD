@@ -140,8 +140,8 @@ namespace DVLD.Manage_Applications_Forms
         {
             if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewLocalDrivingLicenseApplication))
             {
-                 frmAddNewLocalDrivingLicenseApplication AddNewLocalDrivingLicenseApplication = new frmAddNewLocalDrivingLicenseApplication();
-                 AddNewLocalDrivingLicenseApplication.ShowDialog();
+                 frmAddEditLocalDrivingLicenseApplication AddEditLocalDrivingLicenseApplication = new frmAddEditLocalDrivingLicenseApplication();
+                 AddEditLocalDrivingLicenseApplication.ShowDialog();
                  _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
 
             }
@@ -273,6 +273,34 @@ namespace DVLD.Manage_Applications_Forms
             _EnableSpecificTest(NumberOfTakenTests);
         }
 
+        private void _SetApplicationMenuStatus(int LocalDrivingApplicationID) 
+        {
+            if(clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCanceled(LocalDrivingApplicationID))
+            {
+                editApplicationToolStripMenuItem.Enabled = false;
+                cancelToolStripMenuItem.Enabled = false;
+                scheduleTestsToolStripMenuItem.Enabled = false;
+                issueDrivingLicensefirstTimeToolStripMenuItem.Enabled = false;
+                return;
+            }
+            else
+            {
+                editApplicationToolStripMenuItem.Enabled = true;
+                cancelToolStripMenuItem.Enabled = true;
+                scheduleTestsToolStripMenuItem.Enabled = true;
+            }
+
+            byte NumberOfTakenTests = clsLocalDrivingApplication.NumberOfTestsThatTakenByApplicantForLocalDrivingLicenseApplication(LocalDrivingApplicationID);
+
+            if (_IsApplicantPassedAllTests(NumberOfTakenTests))
+                issueDrivingLicensefirstTimeToolStripMenuItem.Enabled = true;
+            
+
+            else
+                issueDrivingLicensefirstTimeToolStripMenuItem.Enabled = false;
+            
+        }
+
         private void scheduleTestsToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
         {
             int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
@@ -303,6 +331,34 @@ namespace DVLD.Manage_Applications_Forms
 
             frmScheduleTestAppointment ScheduleTestAppointment = new frmScheduleTestAppointment(clsTestType.enTestTypes.eStreetTest, LocalDrivingApplicationID);
             ScheduleTestAppointment.ShowDialog();
+            _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
+        }
+
+        private void issueDrivingLicensefirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmsManageLocalApplications_Opened(object sender, EventArgs e)
+        {
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            _SetApplicationMenuStatus(LocalDrivingApplicationID);
+        }
+
+        private void showApplicationDetialsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            frmLocalDrivingLicenseApplicationDetials LocalDrivingLicenseApplicationDetials = new frmLocalDrivingLicenseApplicationDetials(LocalDrivingApplicationID);
+            LocalDrivingLicenseApplicationDetials.ShowDialog();
+            _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
+        }
+
+        private void editApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmAddEditLocalDrivingLicenseApplication AddEditLocalDrivingLicenseApplication = new frmAddEditLocalDrivingLicenseApplication(LocalDrivingApplicationID);
+            AddEditLocalDrivingLicenseApplication.ShowDialog();
             _LocalDrivingLicenseApplicationsList(clsLocalDrivingApplication.GetAllLocalDrivingLicenseApplications());
         }
     }

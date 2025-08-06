@@ -233,6 +233,26 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Driving_License {
+            get {
+                object obj = ResourceManager.GetObject("Driving-License", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Edit_Application {
+            get {
+                object obj = ResourceManager.GetObject("Edit-Application", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Edit_Person {
             get {
                 object obj = ResourceManager.GetObject("Edit_Person", resourceCulture);
@@ -476,6 +496,16 @@ namespace DVLD.Properties {
         internal static System.Drawing.Bitmap Schedule_Tests {
             get {
                 object obj = ResourceManager.GetObject("Schedule_Tests", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Show_Application_Details {
+            get {
+                object obj = ResourceManager.GetObject("Show-Application-Details", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

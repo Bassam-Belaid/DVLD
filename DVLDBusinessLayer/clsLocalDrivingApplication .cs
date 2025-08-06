@@ -6,6 +6,10 @@ namespace DVLDBusinessLayer
 {
     public class clsLocalDrivingApplication : clsApplication
     {
+        private enum enMode { eAddNew = 0, eUpdate = 1 }
+
+        private enMode _Mode;
+
         private static string _DefaultApplicationType = "New Local Driving License Service";
         public static decimal ApplicationFees = clsApplicationType.GetApplicationTypeFeesByApplicationTypeTitle(_DefaultApplicationType);
 
@@ -24,6 +28,7 @@ namespace DVLDBusinessLayer
 
         public clsLocalDrivingApplication()
         {
+            this._Mode = enMode.eAddNew;
             this.ApplicationID = -1;
             this.ApplicantPersonID = -1;
             this.ApplicationDate = DateTime.Now;
@@ -39,6 +44,7 @@ namespace DVLDBusinessLayer
         public clsLocalDrivingApplication(int LDLAppID, int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
             byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
         {
+            this._Mode = enMode.eUpdate;
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;
             this.ApplicationDate = ApplicationDate;
@@ -56,6 +62,11 @@ namespace DVLDBusinessLayer
             this._LocalDrivingApplicationID = clsLocalDrivingApplicationData.AddNewLocalDrivingApplication(this.ApplicantPersonID, this.ApplicationTypeID, this.PaidFees, this.LicenseClassID, this.CreatedByUserID);
 
             return (this._LocalDrivingApplicationID != -1);
+        }
+
+        private bool _UpdateLocalDrivingApplication()
+        {
+            return clsLocalDrivingApplicationData.UpdateLocalDrivingApplication(this.GetLocalDrivingApplicationID(), this.LicenseClassID, this.CreatedByUserID);
         }
 
         public static DataTable GetAllLocalDrivingLicenseApplications() 
@@ -108,7 +119,23 @@ namespace DVLDBusinessLayer
 
         public bool Save() 
         {
-            return _AddNewLocalDrivingApplication();
+            switch(this._Mode) 
+            {
+                case enMode.eAddNew:
+                    if (_AddNewLocalDrivingApplication())
+                    {
+                        this._Mode = enMode.eUpdate;
+                        return true;
+                    }
+                    else
+                        return false;
+
+                case enMode.eUpdate:
+                    return _UpdateLocalDrivingApplication();
+
+            }
+
+            return false;
         }
 
         public static clsLocalDrivingApplication GetLocalDrivingLicenseApplicationInfoByLDLAppID(int LDLAppID)
@@ -146,6 +173,5 @@ namespace DVLDBusinessLayer
         {
             return clsLocalDrivingApplicationData.IsLocalDrivingLicenseApplicationCanceled(LDLAppID);
         }
-
     }
 }

@@ -5,17 +5,34 @@ using System.Windows.Forms;
 
 namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms
 {
-    public partial class frmAddNewLocalDrivingLicenseApplication : Form
-    {  
+    public partial class frmAddEditLocalDrivingLicenseApplication : Form
+    {
+        private enum _enMode { eAddNew = 0, eUpdate = 1 };
+
+        private _enMode _Mode;
+
         private int _PersonID;
         private bool _IsInfoLoaded;
 
         private clsLocalDrivingApplication _LocalDrivingApplication;
 
-        public frmAddNewLocalDrivingLicenseApplication()
+        public frmAddEditLocalDrivingLicenseApplication(int LDLAppID = -1)
         {
             InitializeComponent();
-            _IsInfoLoaded = false;
+
+            if (LDLAppID != -1)
+            {
+                _Mode = _enMode.eUpdate;
+                lblTitle.Text = "Update Local Driving License Application";
+                _LocalDrivingApplication = clsLocalDrivingApplication.GetLocalDrivingLicenseApplicationInfoByLDLAppID(LDLAppID);
+                _PersonID = _LocalDrivingApplication.ApplicantPersonID;
+                ctrlPersonsFilter1.LoadPersonInfo(_PersonID);
+                _LoadApplicationInfo();
+            }
+            else
+            {
+                _IsInfoLoaded = false;
+            }
         }
 
         private bool _IsPersonSelected()
@@ -51,18 +68,29 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
             this.Close();
         }
 
+        private void _LoadApplicationInfo() 
+        {
+            _LoadAllLicenseClasses();
+            cbxLicenseClasses.SelectedItem = clsLicenseClass.GetLicenseClassNameByLicenseClassID(_LocalDrivingApplication.LicenseClassID);
+            lblApplicationID.Text = _LocalDrivingApplication.GetLocalDrivingApplicationID().ToString();
+            lblApplicationDate.Text = _LocalDrivingApplication.ApplicationDate.ToString("dd/MM/yyyy");
+            lblApplicationFees.Text = _LocalDrivingApplication.PaidFees.ToString();
+            lblCreatedUser.Text = clsUser.GetUserNameByUserID(_LocalDrivingApplication.CreatedByUserID);
+            _IsInfoLoaded = true;
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             tbcMenu.SelectedIndex = 1;
 
-            if (!_IsInfoLoaded)
-            {
-                _LoadAllLicenseClasses();
-                lblApplicationDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                lblApplicationFees.Text = clsLocalDrivingApplication.ApplicationFees.ToString();
-                lblCreatedUser.Text = clsGlobal.CurrentUser.UserName;
-                _IsInfoLoaded = true;
-            }
+                if (!_IsInfoLoaded)
+                {
+                    _LoadAllLicenseClasses();
+                    lblApplicationDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    lblApplicationFees.Text = clsLocalDrivingApplication.ApplicationFees.ToString();
+                    lblCreatedUser.Text = clsGlobal.CurrentUser.UserName;
+                    _IsInfoLoaded = true;
+                }
         }
 
         private void tbcMenu_Selecting(object sender, TabControlCancelEventArgs e)
@@ -90,9 +118,12 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
 
         private bool _Save()
         {
-            _LocalDrivingApplication = new clsLocalDrivingApplication();
+            if (_Mode == _enMode.eAddNew)
+            {
+                _LocalDrivingApplication = new clsLocalDrivingApplication();
+                _LocalDrivingApplication.ApplicantPersonID = _PersonID;
+            }
 
-            _LocalDrivingApplication.ApplicantPersonID = _PersonID;
             _LocalDrivingApplication.LicenseClassID = clsLicenseClass.GetLicenseClassIDByLicenseClassName(_GetSelectedLicenseClass());
 
             return _LocalDrivingApplication.Save();
@@ -107,8 +138,12 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult Result = MessageBox.Show("Are You Sure You Want To Add This Application ?",
-                            "Confirm Add",
+
+            string Message = (_Mode == _enMode.eAddNew) ? "The Application Has Been Added Successfully" : "The Application Has Been Updated Successfully";
+            string Title = (_Mode == _enMode.eAddNew) ? "Confirm Add" : "Confirm Update";
+
+                DialogResult Result = MessageBox.Show("Are You Sure About All The Information ?",
+                            Title,
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question);
 
@@ -119,7 +154,7 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
             {
                 if (_Save())
                 {
-                    MessageBox.Show("The Application Has Been Added Successfully",
+                    MessageBox.Show(Message,
                                     "Success",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
