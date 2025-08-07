@@ -15,60 +15,48 @@ namespace DVLDDataAccessLayer
 
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = @"BEGIN TRANSACTION;
+            string Query = @"BEGIN TRY
+    BEGIN TRANSACTION;
 
-		                        DECLARE @PersonID INT;
+    DECLARE @PersonID INT;
+    SET @PersonID = (SELECT ApplicantPersonID FROM Applications WHERE ApplicationID = @ApplicationID);
 
-		                        SET @PersonID = (SELECT ApplicantPersonID FROM Applications WHERE ApplicationID = @ApplicationID);
+    INSERT INTO Drivers (PersonID, CreatedByUserID)
+    VALUES (@PersonID, @CreatedByUserID);
 
-		                        INSERT INTO Drivers (PersonID, CreatedByUserID)
-		                        VALUES(@PersonID, @CreatedByUserID);
+    DECLARE @DriverID INT;
+    SET @DriverID = SCOPE_IDENTITY();
 
-		                        DECLARE @DriverID INT;
-        
-		                        SET @DriverID = SCOPE_IDENTITY();
-        
-		                        DECLARE @DefaultValidityLength TINYINT;
+    DECLARE @DefaultValidityLength TINYINT;
+    SET @DefaultValidityLength = (SELECT DefaultValidityLength FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
 
-		                        SET @DefaultValidityLength = (SELECT DefaultValidityLength FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
+    DECLARE @ExpirationDate DATETIME;
+    SET @ExpirationDate = DATEADD(YEAR, @DefaultValidityLength, GETDATE());
 
-		                        DECLARE @ExpirationDate DATETIME;
+    DECLARE @PaidFees SMALLMONEY;
+    SET @PaidFees = (SELECT ClassFees FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
 
-		                        SET @ExpirationDate = DATEADD(YEAR, @DefaultValidityLength, GETDATE());
+    INSERT INTO Licenses
+        (ApplicationID, DriverID, LicenseClass, ExpirationDate, Notes, PaidFees, CreatedByUserID)
+    VALUES
+        (@ApplicationID, @DriverID, @LicenseClass, @ExpirationDate, @Notes, @PaidFees, @CreatedByUserID);
 
-                                DECLARE @PaidFees SMALLMONEY;
+    DECLARE @NewLicenseID INT;
+    SET @NewLicenseID = SCOPE_IDENTITY();
 
-		                        SET @PaidFees = (SELECT ClassFees FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
+    UPDATE Applications
+    SET ApplicationStatus = 3, LastStatusDate = GETDATE()
+    WHERE ApplicationID = @ApplicationID;
 
-		                        INSERT INTO Licenses
-				                           (ApplicationID
-				                           ,DriverID
-				                           ,LicenseClass
-				                           ,ExpirationDate
-				                           ,Notes
-				                           ,PaidFees
-				                           ,CreatedByUserID)
-			                         VALUES
-				                           (@ApplicationID
-				                           ,@DriverID
-				                           ,@LicenseClass
-				                           ,@ExpirationDate
-				                           ,@Notes
-				                           ,@PaidFees
-				                           ,@CreatedByUserID)
+    COMMIT TRANSACTION;
 
-		                        DECLARE @NewLicenseID INT;
-        
-		                        SET @NewLicenseID = SCOPE_IDENTITY();
+    SELECT @NewLicenseID AS NewLicenseID;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
 
-		                        UPDATE Applications
-		                        SET ApplicationStatus = 3,
-                                LastStatusDate = GETDATE()
-		                        WHERE ApplicationID = @ApplicationID;
-
-                        COMMIT TRANSACTION;
-
-                        SELECT @NewLicenseID AS NewLicenseID;";
+    SELECT -1 AS NewLicenseID;
+END CATCH;";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
 
