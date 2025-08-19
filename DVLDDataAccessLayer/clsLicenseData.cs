@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -94,6 +96,81 @@ END CATCH;";
             }
 
             return License;
+        }
+
+        public static bool GetLicenseByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID, ref int LicenseID, ref int ApplicationID, ref int DriverID,
+            ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, 
+            ref decimal PaidFees, ref bool IsActive, ref byte IssueReason, ref int CreatedByUserID) 
+        {
+            bool IsFound = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"SELECT Licenses.*
+                                FROM Applications INNER JOIN LocalDrivingLicenseApplications 
+                                ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN Licenses 
+                                ON Applications.ApplicationID = Licenses.ApplicationID
+                                WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+
+                    IsFound = true;
+
+                    LicenseID = (int)Reader["LicenseID"];
+                    ApplicationID = (int)Reader["ApplicationID"];
+                    DriverID = (int)Reader["DriverID"];
+                    LicenseClassID = (int)Reader["LicenseClass"];
+                    IssueDate = (DateTime)Reader["IssueDate"];
+                    ExpirationDate = (DateTime)Reader["ExpirationDate"];
+                    PaidFees = (decimal)Reader["PaidFees"];
+                    IsActive = (bool)Reader["IsActive"];
+                    IssueReason = Convert.ToByte((byte)Reader["IssueReason"]);
+                    CreatedByUserID = (int)Reader["CreatedByUserID"];
+
+                    if (Reader["Notes"] != DBNull.Value)
+                    {
+                        Notes = (string)Reader["Notes"];
+                    }
+                    else
+                    {
+                        Notes = null;
+                    }
+                }
+                else
+                {
+                    IsFound = false;
+                }
+
+                Reader.Close();
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+                IsFound = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                IsFound = false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsFound;
         }
     }
 }

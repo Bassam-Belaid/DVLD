@@ -34,3 +34,9 @@ C:\Bassam\My-Github-Projects\DVLD\Util\obj\Debug\Util.csproj.AssemblyReference.c
 C:\Bassam\My-Github-Projects\DVLD\Util\obj\Debug\Util.csproj.CoreCompileInputs.cache
 C:\Bassam\My-Github-Projects\DVLD\Util\obj\Debug\Validation.dll
 C:\Bassam\My-Github-Projects\DVLD\Util\obj\Debug\Validation.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\Util\bin\Debug\Validation.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\Util\bin\Debug\Validation.pdb
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\Util\obj\Debug\Util.csproj.AssemblyReference.cache
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\Util\obj\Debug\Util.csproj.CoreCompileInputs.cache
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\Util\obj\Debug\Validation.dll
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\Util\obj\Debug\Validation.pdb

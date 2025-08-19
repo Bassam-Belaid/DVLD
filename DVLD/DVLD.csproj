@@ -52,6 +52,12 @@
     <Compile Include="ctrlAddEditPersonForm.Designer.cs">
       <DependentUpon>ctrlAddEditPersonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlLicenseCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlLicenseCard.Designer.cs">
+      <DependentUpon>ctrlLicenseCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlListContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +135,12 @@
     </Compile>
     <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmIssueDrivingLicenseFirstTime.Designer.cs">
       <DependentUpon>frmIssueDrivingLicenseFirstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmLicenseDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmLicenseDetails.Designer.cs">
+      <DependentUpon>frmLicenseDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmAddEditTest.cs">
       <SubType>Form</SubType>
@@ -219,6 +231,9 @@
     <EmbeddedResource Include="ctrlAddEditPersonForm.resx">
       <DependentUpon>ctrlAddEditPersonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctrlLicenseCard.resx">
+      <DependentUpon>ctrlLicenseCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlListContent.resx">
       <DependentUpon>ctrlListContent.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmIssueDrivingLicenseFirstTime.resx">
       <DependentUpon>frmIssueDrivingLicenseFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmLicenseDetails.resx">
+      <DependentUpon>frmLicenseDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmAddEditTest.resx">
       <DependentUpon>frmAddEditTest.cs</DependentUpon>
@@ -494,6 +512,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Edit-Application.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Driving-Licence-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question-Mark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

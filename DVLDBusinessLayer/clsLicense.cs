@@ -47,13 +47,31 @@ namespace DVLDBusinessLayer
             this.ApplicationID = -1;
             this.DriverID = -1;
             this.LicenseClassID = -1;
-            this.IssueDate = DateTime.Now;
-            this.ExpirationDate = DateTime.Now;
+            this.IssueDate = DateTime.MinValue;
+            this.ExpirationDate = DateTime.MinValue;
             this.Notes = "";
             this.PaidFees = 0;
             this.IsActive = false;
             this.IssueReason = enIssueReasons.eNew;
             this.CreatedByUserID = -1;
+        }
+
+        public clsLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID,
+                  DateTime IssueDate, DateTime ExpirationDate, string Notes,
+                  decimal PaidFees, bool IsActive, byte IssueReason, int CreatedByUserID)
+        {
+            this._Mode = enMode.eUpdate;
+            this._LicenseID = LicenseID;
+            this.ApplicationID = ApplicationID;
+            this.DriverID = DriverID;
+            this.LicenseClassID = LicenseClassID;
+            this.IssueDate = IssueDate;
+            this.ExpirationDate = ExpirationDate;
+            this.Notes = Notes;
+            this.PaidFees = PaidFees;
+            this.IsActive = IsActive;
+            this.IssueReason = (enIssueReasons)IssueReason;
+            this.CreatedByUserID = CreatedByUserID;
         }
 
         private bool _IssueNewsLicense() 
@@ -79,6 +97,44 @@ namespace DVLDBusinessLayer
             }
 
             return false;
+        }
+
+        public static clsLicense GetLicenseByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            int LicenseID = -1, ApplicationID = -1, DriverID = -1, LicenseClassID = -1, CreatedByUserID = -1;
+            byte IssueReason = 0;
+            DateTime IssueDate = DateTime.MinValue, ExpirationDate = DateTime.MinValue;
+            string Notes = "";
+            decimal PaidFees = 0;
+            bool IsActive = false;
+
+            if (clsLicenseData.GetLicenseByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID, ref LicenseID, ref ApplicationID, ref DriverID, ref LicenseClassID,
+                ref IssueDate, ref ExpirationDate, ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
+                return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClassID, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
+
+            else 
+                return null;
+        }
+
+        public string GetIssueReason() 
+        {
+            switch (this.IssueReason) 
+            {
+                case enIssueReasons.eNew:
+                    return "First Time";
+
+                case enIssueReasons.eLostReplacement:
+                    return "Lost Replacement";
+
+                case enIssueReasons.eDamagedReplacement:
+                    return "Damaged Replacement";
+
+                case enIssueReasons.eRenewal:
+                    return "Renewal";
+
+                default:
+                    return "";
+            }
         }
 
     }
