@@ -205,12 +205,11 @@ namespace DVLD.Manage_Users_Forms
 
         private void _AddNewUser()
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewUser))
-            {
+            
                 frmAddEditUser AddEditUser = new frmAddEditUser();
                 AddEditUser.ShowDialog();
                 _LoadUsersList(clsUser.GetAllUsers());
-            }
+            
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -220,14 +219,13 @@ namespace DVLD.Manage_Users_Forms
 
         private void showDetilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowUserDetails))
-            {
+            
                 int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
                 frmUserDetails UserDetails = new frmUserDetails(UserID);
                 UserDetails.ShowDialog();
                 _LoadUsersList(clsUser.GetAllUsers());
-            }
+            
         }
         
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -239,19 +237,17 @@ namespace DVLD.Manage_Users_Forms
         {
             int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            if (clsGlobal.CurrentUser.GetUserID() == UserID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eEditUser))
-            {
+            
 
                 frmAddEditUser AddEditUser = new frmAddEditUser(UserID);
                 AddEditUser.ShowDialog();
                 _LoadUsersList(clsUser.GetAllUsers());
-            }
+            
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eDeleteUser))
-            {
+            
                 int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
                 DialogResult Result = MessageBox.Show("Are You Sure You Want To Delete User [" + UserID.ToString() + "]",
@@ -278,20 +274,18 @@ namespace DVLD.Manage_Users_Forms
                 }
 
                 _LoadUsersList(clsUser.GetAllUsers());
-            }
+            
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int UserID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-
-            if (clsGlobal.CurrentUser.GetUserID() == UserID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eChangeUserPassword))
-            {
+            
                 string UserPassword = clsUser.GetUserPasswordByUserID(UserID);
 
                 frmChangePassword ChangePassword = new frmChangePassword(UserID, UserPassword);
                 ChangePassword.ShowDialog();
-            }
+            
         }
 
     }

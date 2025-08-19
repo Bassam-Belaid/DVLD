@@ -161,8 +161,7 @@ namespace DVLD.Manage_Applications_Forms
 
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eCancelLocalDrivingLicenseApplication))
-            {
+            
                 int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
                 DialogResult Result = MessageBox.Show("Are You Sure You Want To Cancel The Application [" + LocalDrivingApplicationID.ToString() + "] ?",
@@ -188,13 +187,12 @@ namespace DVLD.Manage_Applications_Forms
                                         MessageBoxIcon.Error);
                     }
                 }
-            }
+            
         }
 
         private void deleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eDeleteLocalDrivingLicenseApplication))
-            {
+            
                 int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
                 DialogResult Result = MessageBox.Show("Are You Sure You Want To Delete The Application [" + LocalDrivingApplicationID.ToString() + "] ?",
@@ -220,7 +218,7 @@ namespace DVLD.Manage_Applications_Forms
                                         MessageBoxIcon.Error);
                     }
                 }
-            }
+            
         }
 
         private void _DisableAllTests() 

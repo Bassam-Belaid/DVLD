@@ -234,24 +234,22 @@ namespace DVLD.Manage_People_Forms
 
         private void showDetilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowPersonDetails))
-            {
+            
                 int PersonID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
                 frmPersonDetails frmPersonDetails = new frmPersonDetails(PersonID);
                 frmPersonDetails.ShowDialog();
                 _LoadPeopleList(clsPerson.GetAllPeople());
-            }
+            
         }
 
         private void _AddNewPerson()
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewPerson))
-            {
+            
                 frmAddEditPerson AddEditPerson = new frmAddEditPerson();
                 AddEditPerson.ShowDialog();
                 _LoadPeopleList(clsPerson.GetAllPeople());
-            }
+            
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -268,18 +266,16 @@ namespace DVLD.Manage_People_Forms
         {
             int PersonID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            if (clsGlobal.CurrentUser.PersonID == PersonID || ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eEditPerson))
-            {
+            
                 frmAddEditPerson AddEditPerson = new frmAddEditPerson(PersonID);
                 AddEditPerson.ShowDialog();
                 _LoadPeopleList(clsPerson.GetAllPeople());
-            }
+            
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eDeletePerson))
-            {
+            
                 int PersonID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
                 DialogResult Result = MessageBox.Show("Are You Sure You Want To Delete Person [" + PersonID.ToString() + "]",
@@ -306,7 +302,7 @@ namespace DVLD.Manage_People_Forms
                 }
 
                 _LoadPeopleList(clsPerson.GetAllPeople());
-            }
+            
         }
 
         private void txtSearchInput_TextChanged(object sender, EventArgs e)

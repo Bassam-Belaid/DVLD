@@ -54,12 +54,11 @@ namespace DVLD
 
         private void llblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eShowPersonDetails))
-            {
+            
                 frmPersonDetails frmPersonDetails = new frmPersonDetails(LocalDrivingApplication.ApplicantPersonID);
                 frmPersonDetails.ShowDialog();
                 LoadLocalDrivingLicenseApplicationInfoByLDLAppID(LocalDrivingApplication.GetLocalDrivingApplicationID());
-            }
+            
         }
 
         private void llblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
