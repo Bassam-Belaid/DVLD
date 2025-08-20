@@ -184,6 +184,12 @@
     <Compile Include="Manage_Applications_Forms\Manage_Test_Types_Forms\frmUpdateTestTypes.Designer.cs">
       <DependentUpon>frmUpdateTestTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manage_Drivers_Forms\frmManageDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Drivers_Forms\frmManageDrivers.Designer.cs">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage_People_Forms\frmAddEditPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Applications_Forms\Manage_Test_Types_Forms\frmUpdateTestTypes.resx">
       <DependentUpon>frmUpdateTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Drivers_Forms\frmManageDrivers.resx">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_People_Forms\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
@@ -518,6 +527,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Question-Mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drivers_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

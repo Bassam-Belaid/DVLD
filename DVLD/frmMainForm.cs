@@ -4,6 +4,7 @@ using DVLD.Manage_Applications_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Application_Types_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Test_Types_Forms;
+using DVLD.Manage_Drivers_Forms;
 using DVLD.Manage_People_Forms;
 using DVLD.Manage_Users_Forms;
 using DVLDBusinessLayer;
@@ -17,16 +18,6 @@ namespace DVLD
             InitializeComponent();
         }
 
-        private void _ShowNotImplementedMessage()
-        {
-            MessageBox.Show(
-                "Not implemented",
-                "Notification",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning
-            );
-        }
-
         private void _Logout()
         {
             clsGlobal.CurrentUser = null;
@@ -37,22 +28,26 @@ namespace DVLD
         {
             if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eManagePeople))
             {
-                frmManagePeople frmManagePeople = new frmManagePeople();
-                frmManagePeople.ShowDialog();
+                frmManagePeople ManagePeople = new frmManagePeople();
+                ManagePeople.ShowDialog();
             }
         }
 
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _ShowNotImplementedMessage();
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eManageDrivers))
+            {
+                frmManageDrivers ManageDrivers = new frmManageDrivers();
+                ManageDrivers.ShowDialog();
+            }
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eManageUsers))
             {
-                frmManageUsers frmManageUsers = new frmManageUsers();
-                frmManageUsers.ShowDialog();
+                frmManageUsers ManageUsers = new frmManageUsers();
+                ManageUsers.ShowDialog();
             }
         }
 

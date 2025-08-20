@@ -5,14 +5,15 @@ namespace DVLDBusinessLayer
 {
     public static class clsUserPermission
     {
-        public enum enPermissions { eManagePeople = 1, eManageUsers = 2, eManageApplicationTypes = 4, eManageTestTypes = 8,
-            eAddNewLocalDrivingLicenseApplication = 16, eManageLocalDrivingLicenseApplications = 32
+        public enum enPermissions { eManagePeople = 1, eManageUsers = 2, eManageDrivers = 4, eManageApplicationTypes = 8, eManageTestTypes = 16,
+            eAddNewLocalDrivingLicenseApplication = 32, eManageLocalDrivingLicenseApplications = 64
         };
 
         public static readonly Dictionary<enPermissions, string> PermissionDescriptions = new Dictionary<enPermissions, string>
         {
             { enPermissions.eManagePeople, "Manage People" },
             { enPermissions.eManageUsers, "Manage Users" },
+            { enPermissions.eManageDrivers, "Manage Drivers" },
             { enPermissions.eManageApplicationTypes, "Manage Application" },
             { enPermissions.eManageTestTypes, "Manage Test Types" },
             { enPermissions.eAddNewLocalDrivingLicenseApplication, "Add New Local Driving License Application" },

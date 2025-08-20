@@ -242,3 +242,4 @@ C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.ctrlLicens
 C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.frmLicenseDetails.resources
 C:\Bassam\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.ctrlLicenseCard.resources
 C:\Bassam\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.frmLicenseDetails.resources
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Drivers_Forms.frmManageDrivers.resources
