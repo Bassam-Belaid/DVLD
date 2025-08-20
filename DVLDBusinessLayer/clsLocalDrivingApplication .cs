@@ -102,6 +102,11 @@ namespace DVLDBusinessLayer
             return clsLocalDrivingApplicationData.IsApplicantHasAnActiveLocalDrivingLicenseApplicationWithSameLicenseClass(ApplicantPersonID, ClassName);
         }
 
+        public static int IsApplicantHasAnActiveLicenseWithSameLicenseClass(int ApplicantPersonID, string ClassName) 
+        {
+            return clsLocalDrivingApplicationData.IsApplicantHasAnActiveLicenseWithSameLicenseClass(ApplicantPersonID, ClassName);
+        }
+
         public static bool CancelLocalDrivingLicenseApplication(int LDLAppID) 
         {
             return clsLocalDrivingApplicationData.CancelLocalDrivingLicenseApplication(LDLAppID);

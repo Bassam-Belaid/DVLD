@@ -116,6 +116,23 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
             return false;
         }
 
+        private bool _IsApplicantHasAnActiveLicenseWithSameLicenseClass(int ApplicantPersonID, string LicenseClass)
+        {
+            int LicenseID = clsLocalDrivingApplication.IsApplicantHasAnActiveLicenseWithSameLicenseClass(ApplicantPersonID, LicenseClass);
+
+            if (LicenseID != -1)
+            {
+                MessageBox.Show("Choose Onther License Class, The Selected Person Already Have An Active License With Selected Class With ID = " + LicenseID,
+                                    "Error",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+
+                return true;
+            }
+
+            return false;
+        }
+
         private bool _Save()
         {
             if (_Mode == _enMode.eAddNew)
@@ -147,7 +164,7 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Ma
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question);
 
-            if (_IsApplicantHasAnActiveLocalDrivingLicenseApplicationWithSameLicenseClass(_PersonID, _GetSelectedLicenseClass()))
+            if (_IsApplicantHasAnActiveLicenseWithSameLicenseClass(_PersonID, _GetSelectedLicenseClass()) || _IsApplicantHasAnActiveLocalDrivingLicenseApplicationWithSameLicenseClass(_PersonID, _GetSelectedLicenseClass()))
                 return;
 
             if (Result == DialogResult.Yes)

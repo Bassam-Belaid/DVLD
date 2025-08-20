@@ -396,7 +396,52 @@ namespace DVLDDataAccessLayer
 
             return LocalDrivingApplicationID;
         }
-    
+
+        public static int IsApplicantHasAnActiveLicenseWithSameLicenseClass(int ApplicantPersonID, string ClassName)
+        {
+            int LicenseID = -1;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"SELECT Licenses.LicenseID
+                                FROM People INNER JOIN Drivers 
+                                ON People.PersonID = Drivers.PersonID INNER JOIN Licenses 
+                                ON Drivers.DriverID = Licenses.DriverID INNER JOIN LicenseClasses 
+                                ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
+                                WHERE Drivers.PersonID = @ApplicantPersonID AND LicenseClasses.ClassName = @ClassName;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+            Command.Parameters.AddWithValue("@ClassName", ClassName);
+
+            try
+            {
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+                if (Result != null && int.TryParse(Result.ToString(), out int SelectedID))
+                {
+                    LicenseID = SelectedID;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return LicenseID;
+        }
+
         public static bool CancelLocalDrivingLicenseApplication(int LDLAppID) 
         {
             int RowsAffected = 0;
