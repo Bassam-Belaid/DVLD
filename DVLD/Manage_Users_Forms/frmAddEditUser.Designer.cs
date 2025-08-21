@@ -405,6 +405,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddEditUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add / Edit User Info";
             this.tbcMenu.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

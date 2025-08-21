@@ -281,6 +281,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManageUsers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.cmsManageUsersMenu.ResumeLayout(false);

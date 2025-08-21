@@ -92,7 +92,7 @@
             this.editToolStripMenuItem,
             this.takeTestToolStripMenuItem});
             this.cmsManageTestAppointments.Name = "cmsManageTestAppointments";
-            this.cmsManageTestAppointments.Size = new System.Drawing.Size(171, 144);
+            this.cmsManageTestAppointments.Size = new System.Drawing.Size(169, 144);
             this.cmsManageTestAppointments.Opening += new System.ComponentModel.CancelEventHandler(this.cmsManageTestAppointments_Opening);
             // 
             // editToolStripMenuItem
@@ -100,7 +100,7 @@
             this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.Manage_Applications_Types;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(170, 70);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(168, 70);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -109,7 +109,7 @@
             this.takeTestToolStripMenuItem.Image = global::DVLD.Properties.Resources.Manage_Tests_Types;
             this.takeTestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
-            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(170, 70);
+            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(168, 70);
             this.takeTestToolStripMenuItem.Text = "Take Test";
             this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
             // 
@@ -181,6 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1038, 786);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAddNew);
@@ -195,6 +196,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmScheduleTestAppointment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schedule Test Type Appointments";
             ((System.ComponentModel.ISupportInitialize)(this.pbxTestIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

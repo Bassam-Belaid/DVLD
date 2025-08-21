@@ -434,6 +434,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(564, 664);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.pictureBox6);
@@ -449,6 +450,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTakeTest";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTakeTest";
             this.gpxTestType.ResumeLayout(false);
             this.gpxTestType.PerformLayout();

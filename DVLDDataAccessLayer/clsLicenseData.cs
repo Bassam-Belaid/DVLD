@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -171,6 +172,54 @@ END CATCH;";
             }
 
             return IsFound;
+        }
+
+        public static DataTable GetAllLocalLicensesForApplicant(int ApplicantPersonID) 
+        {
+            DataTable DT = null;
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"SELECT Licenses.LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName, Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
+                                FROM Applications INNER JOIN Licenses 
+                                ON Applications.ApplicationID = Licenses.ApplicationID INNER JOIN LicenseClasses 
+                                ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
+                                WHERE Applications.ApplicantPersonID = @ApplicantPersonID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+
+            try
+            {
+                Connection.Open();
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.HasRows)
+
+                {
+                    DT = new DataTable();
+                    DT.Load(Reader);
+                }
+
+                Reader.Close();
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return DT;
         }
     }
 }

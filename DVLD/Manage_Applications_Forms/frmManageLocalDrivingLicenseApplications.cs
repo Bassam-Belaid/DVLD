@@ -278,12 +278,14 @@ namespace DVLD.Manage_Applications_Forms
             {
                 deleToolStripMenuItem.Enabled = false;
                 showLicenseToolStripMenuItem.Enabled = true;
+                showPersonLicenseHistoryToolStripMenuItem.Enabled = true;
             }
 
             else
             {
                 deleToolStripMenuItem.Enabled = true;
                 showLicenseToolStripMenuItem.Enabled = false;
+                showPersonLicenseHistoryToolStripMenuItem.Enabled = false;
             }
 
             if (clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCanceled(LocalDrivingApplicationID) || clsLocalDrivingApplication.IsLocalDrivingLicenseApplicationCompleted(LocalDrivingApplicationID))
@@ -385,6 +387,14 @@ namespace DVLD.Manage_Applications_Forms
 
             frmLicenseDetails LicenseDetails = new frmLicenseDetails(LocalDrivingApplicationID);
             LicenseDetails.ShowDialog();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmPersonLicenseHistory PersonLicenseHistory = new frmPersonLicenseHistory(LocalDrivingApplicationID);
+            PersonLicenseHistory.ShowDialog();
         }
     }
 }

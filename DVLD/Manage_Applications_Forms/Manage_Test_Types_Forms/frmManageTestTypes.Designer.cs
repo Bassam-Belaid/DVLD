@@ -150,6 +150,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManageTestTypes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Test Types";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

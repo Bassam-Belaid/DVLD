@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.gpxTestType = new System.Windows.Forms.GroupBox();
+            this.gbxRetakeTestInfo = new System.Windows.Forms.GroupBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.lblRetakeAppID = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblTotalFees = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblRetakeTestFees = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblTestFees = new System.Windows.Forms.Label();
@@ -51,17 +61,11 @@
             this.pbxTestIcon = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.gbxRetakeTestInfo = new System.Windows.Forms.GroupBox();
-            this.lblRetakeTestFees = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblTotalFees = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.lblRetakeAppID = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.gpxTestType.SuspendLayout();
+            this.gbxRetakeTestInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -69,10 +73,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTestIcon)).BeginInit();
-            this.gbxRetakeTestInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // gpxTestType
@@ -106,6 +106,112 @@
             this.gpxTestType.TabIndex = 0;
             this.gpxTestType.TabStop = false;
             this.gpxTestType.Text = "groupBox1";
+            // 
+            // gbxRetakeTestInfo
+            // 
+            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox8);
+            this.gbxRetakeTestInfo.Controls.Add(this.lblRetakeAppID);
+            this.gbxRetakeTestInfo.Controls.Add(this.label13);
+            this.gbxRetakeTestInfo.Controls.Add(this.lblTotalFees);
+            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox6);
+            this.gbxRetakeTestInfo.Controls.Add(this.label11);
+            this.gbxRetakeTestInfo.Controls.Add(this.lblRetakeTestFees);
+            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox5);
+            this.gbxRetakeTestInfo.Controls.Add(this.label8);
+            this.gbxRetakeTestInfo.Enabled = false;
+            this.gbxRetakeTestInfo.Location = new System.Drawing.Point(13, 407);
+            this.gbxRetakeTestInfo.Name = "gbxRetakeTestInfo";
+            this.gbxRetakeTestInfo.Size = new System.Drawing.Size(595, 126);
+            this.gbxRetakeTestInfo.TabIndex = 74;
+            this.gbxRetakeTestInfo.TabStop = false;
+            this.gbxRetakeTestInfo.Text = "Retake Test Info";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::DVLD.Properties.Resources.National_Number;
+            this.pictureBox8.Location = new System.Drawing.Point(142, 77);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(26, 20);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 49;
+            this.pictureBox8.TabStop = false;
+            // 
+            // lblRetakeAppID
+            // 
+            this.lblRetakeAppID.AutoSize = true;
+            this.lblRetakeAppID.Location = new System.Drawing.Point(173, 77);
+            this.lblRetakeAppID.Name = "lblRetakeAppID";
+            this.lblRetakeAppID.Size = new System.Drawing.Size(36, 20);
+            this.lblRetakeAppID.TabIndex = 48;
+            this.lblRetakeAppID.Text = "???";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(44, 77);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 20);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "R.App ID :";
+            // 
+            // lblTotalFees
+            // 
+            this.lblTotalFees.AutoSize = true;
+            this.lblTotalFees.Location = new System.Drawing.Point(473, 38);
+            this.lblTotalFees.Name = "lblTotalFees";
+            this.lblTotalFees.Size = new System.Drawing.Size(36, 20);
+            this.lblTotalFees.TabIndex = 46;
+            this.lblTotalFees.Text = "???";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::DVLD.Properties.Resources.Fees;
+            this.pictureBox6.Location = new System.Drawing.Point(437, 38);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(26, 20);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 45;
+            this.pictureBox6.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(323, 38);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(104, 20);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "Total Fees :";
+            // 
+            // lblRetakeTestFees
+            // 
+            this.lblRetakeTestFees.AutoSize = true;
+            this.lblRetakeTestFees.Location = new System.Drawing.Point(173, 38);
+            this.lblRetakeTestFees.Name = "lblRetakeTestFees";
+            this.lblRetakeTestFees.Size = new System.Drawing.Size(18, 20);
+            this.lblRetakeTestFees.TabIndex = 43;
+            this.lblRetakeTestFees.Text = "0";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::DVLD.Properties.Resources.Fees;
+            this.pictureBox5.Location = new System.Drawing.Point(142, 38);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(26, 20);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 42;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(23, 38);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(114, 20);
+            this.label8.TabIndex = 41;
+            this.label8.Text = "R.App.Fees :";
             // 
             // btnSave
             // 
@@ -329,116 +435,11 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // gbxRetakeTestInfo
-            // 
-            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox8);
-            this.gbxRetakeTestInfo.Controls.Add(this.lblRetakeAppID);
-            this.gbxRetakeTestInfo.Controls.Add(this.label13);
-            this.gbxRetakeTestInfo.Controls.Add(this.lblTotalFees);
-            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox6);
-            this.gbxRetakeTestInfo.Controls.Add(this.label11);
-            this.gbxRetakeTestInfo.Controls.Add(this.lblRetakeTestFees);
-            this.gbxRetakeTestInfo.Controls.Add(this.pictureBox5);
-            this.gbxRetakeTestInfo.Controls.Add(this.label8);
-            this.gbxRetakeTestInfo.Enabled = false;
-            this.gbxRetakeTestInfo.Location = new System.Drawing.Point(13, 407);
-            this.gbxRetakeTestInfo.Name = "gbxRetakeTestInfo";
-            this.gbxRetakeTestInfo.Size = new System.Drawing.Size(595, 126);
-            this.gbxRetakeTestInfo.TabIndex = 74;
-            this.gbxRetakeTestInfo.TabStop = false;
-            this.gbxRetakeTestInfo.Text = "Retake Test Info";
-            // 
-            // lblRetakeTestFees
-            // 
-            this.lblRetakeTestFees.AutoSize = true;
-            this.lblRetakeTestFees.Location = new System.Drawing.Point(173, 38);
-            this.lblRetakeTestFees.Name = "lblRetakeTestFees";
-            this.lblRetakeTestFees.Size = new System.Drawing.Size(18, 20);
-            this.lblRetakeTestFees.TabIndex = 43;
-            this.lblRetakeTestFees.Text = "0";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::DVLD.Properties.Resources.Fees;
-            this.pictureBox5.Location = new System.Drawing.Point(142, 38);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(26, 20);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 42;
-            this.pictureBox5.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(23, 38);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(114, 20);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "R.App.Fees :";
-            // 
-            // lblTotalFees
-            // 
-            this.lblTotalFees.AutoSize = true;
-            this.lblTotalFees.Location = new System.Drawing.Point(473, 38);
-            this.lblTotalFees.Name = "lblTotalFees";
-            this.lblTotalFees.Size = new System.Drawing.Size(36, 20);
-            this.lblTotalFees.TabIndex = 46;
-            this.lblTotalFees.Text = "???";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::DVLD.Properties.Resources.Fees;
-            this.pictureBox6.Location = new System.Drawing.Point(437, 38);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(26, 20);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 45;
-            this.pictureBox6.TabStop = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(323, 38);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(104, 20);
-            this.label11.TabIndex = 44;
-            this.label11.Text = "Total Fees :";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::DVLD.Properties.Resources.National_Number;
-            this.pictureBox8.Location = new System.Drawing.Point(142, 77);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(26, 20);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 49;
-            this.pictureBox8.TabStop = false;
-            // 
-            // lblRetakeAppID
-            // 
-            this.lblRetakeAppID.AutoSize = true;
-            this.lblRetakeAppID.Location = new System.Drawing.Point(173, 77);
-            this.lblRetakeAppID.Name = "lblRetakeAppID";
-            this.lblRetakeAppID.Size = new System.Drawing.Size(36, 20);
-            this.lblRetakeAppID.TabIndex = 48;
-            this.lblRetakeAppID.Text = "???";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(44, 77);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 20);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "R.App ID :";
-            // 
             // frmAddEditTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(638, 664);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.gpxTestType);
@@ -446,9 +447,15 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddEditTest";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add / Edit Test";
             this.gpxTestType.ResumeLayout(false);
             this.gpxTestType.PerformLayout();
+            this.gbxRetakeTestInfo.ResumeLayout(false);
+            this.gbxRetakeTestInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -456,11 +463,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTestIcon)).EndInit();
-            this.gbxRetakeTestInfo.ResumeLayout(false);
-            this.gbxRetakeTestInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }

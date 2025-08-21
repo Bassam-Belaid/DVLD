@@ -142,6 +142,12 @@
     <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmLicenseDetails.Designer.cs">
       <DependentUpon>frmLicenseDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmPersonLicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmPersonLicenseHistory.Designer.cs">
+      <DependentUpon>frmPersonLicenseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmAddEditTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmLicenseDetails.resx">
       <DependentUpon>frmLicenseDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\frmPersonLicenseHistory.resx">
+      <DependentUpon>frmPersonLicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Applications_Forms\Manage_Driver_License_Services_Forms\Manage_Local_Driving_License_Applications_Tests\frmAddEditTest.resx">
       <DependentUpon>frmAddEditTest.cs</DependentUpon>
@@ -530,6 +539,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Drivers_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\License_History_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\License_History_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
