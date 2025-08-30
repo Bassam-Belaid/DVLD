@@ -121,6 +121,9 @@
   <data name="Add_New_Person" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add_New_Person.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Add_New_Manage_Local_Driving_License_Applications" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_New_Manage_Local_Driving_License_Applications.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Edit-Application" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit-Application.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,6 +133,9 @@
   <data name="Phone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Phone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="International" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\International.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Find_Person" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Find_Person.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,9 +144,6 @@
   </data>
   <data name="Drivers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Drivers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Vision_Test" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Vision_Test.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Manage_Local_Driving_License_Applications" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Manage_Local_Driving_License_Applications.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,6 +156,9 @@
   </data>
   <data name="Location" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Location.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete_Person" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete_Person1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="People_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\People_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,6 +187,9 @@
   <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Manage_Applications" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Manage_Applications.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Cancel_Application" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancel_Application.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -199,8 +208,8 @@
   <data name="Card" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Card.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add_New_Manage_Local_Driving_License_Applications" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_New_Manage_Local_Driving_License_Applications.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="License_History_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\License_History_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Driver_License_Services" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Driver_License_Services.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,8 +265,8 @@
   <data name="Add_New_User" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add_New_User.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Users_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Users_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Vision_Test" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vision_Test.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="World" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\World.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -283,19 +292,16 @@
   <data name="Change_Password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Change_Password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Manage_Applications" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Manage_Applications.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="License_History_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\License_History_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Delete_Person" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Delete_Person1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Users_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Users_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="People" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\People.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="License_History_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\License_History_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="License_History_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\License_History_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="International_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\International_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

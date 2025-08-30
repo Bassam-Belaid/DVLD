@@ -12,11 +12,11 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
 {
     public partial class frmLicenseDetails : Form
     {
-        public frmLicenseDetails(int LocalDrivingApplicationID)
+        public frmLicenseDetails(int LicenseID)
         {
             InitializeComponent();
 
-            ctrlLicenseCard1.LoadLicenseDetailsByLocalDrivingLicenseApplicationID(LocalDrivingApplicationID);
+            ctrlLicenseCard1.LoadLicenseDetailsByLicenseID(LicenseID);
         }
     }
 }

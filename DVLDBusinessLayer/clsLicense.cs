@@ -143,5 +143,32 @@ namespace DVLDBusinessLayer
             return clsLicenseData.GetAllLocalLicensesForApplicant(ApplicantPersonID);
         }
 
+        public static clsLicense GetLicenseByLicenseID(int LicenseID)
+        {
+            int ApplicationID = -1, DriverID = -1, LicenseClassID = -1, CreatedByUserID = -1;
+            byte IssueReason = 0;
+            DateTime IssueDate = DateTime.MinValue, ExpirationDate = DateTime.MinValue;
+            string Notes = "";
+            decimal PaidFees = 0;
+            bool IsActive = false;
+
+            if (clsLicenseData.GetLicenseByLicenseID(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClassID,
+                ref IssueDate, ref ExpirationDate, ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
+                return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClassID, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
+
+            else
+                return null;
+        }
+
+        public bool IsExpired() 
+        {
+            return (DateTime.Now > this.ExpirationDate);
+        }
+
+        public bool IsLicenseAnOrdinaryDrivingLicense()
+        {
+            return (clsLicenseClass.GetLicenseClassNameByLicenseClassID(this.LicenseClassID)) == ("Class 3 - Ordinary driving license");
+        }
+
     }
 }

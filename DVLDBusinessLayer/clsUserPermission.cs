@@ -6,7 +6,7 @@ namespace DVLDBusinessLayer
     public static class clsUserPermission
     {
         public enum enPermissions { eManagePeople = 1, eManageUsers = 2, eManageDrivers = 4, eManageApplicationTypes = 8, eManageTestTypes = 16,
-            eAddNewLocalDrivingLicenseApplication = 32, eManageLocalDrivingLicenseApplications = 64
+            eAddNewLocalDrivingLicenseApplication = 32, eManageLocalDrivingLicenseApplications = 64, eAddNewInternationlLicense = 128, eManageInternationalLicenseApplications = 256
         };
 
         public static readonly Dictionary<enPermissions, string> PermissionDescriptions = new Dictionary<enPermissions, string>
@@ -18,6 +18,9 @@ namespace DVLDBusinessLayer
             { enPermissions.eManageTestTypes, "Manage Test Types" },
             { enPermissions.eAddNewLocalDrivingLicenseApplication, "Add New Local Driving License Application" },
             { enPermissions.eManageLocalDrivingLicenseApplications, "Manage Local Driving License Applications" },
+            { enPermissions.eAddNewInternationlLicense, "Add New Internationl License" },
+            { enPermissions.eManageInternationalLicenseApplications, "Manage International License Applications" },
+
         };
 
         public static int GetPermissionValueByPermissionDescription(string PermissionDescription)

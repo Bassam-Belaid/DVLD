@@ -385,7 +385,9 @@ namespace DVLD.Manage_Applications_Forms
         {
             int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            frmLicenseDetails LicenseDetails = new frmLicenseDetails(LocalDrivingApplicationID);
+            int LicenseID = clsLocalDrivingApplication.GetLicenseIDByLDLAppID(LocalDrivingApplicationID);
+
+            frmLicenseDetails LicenseDetails = new frmLicenseDetails(LicenseID);
             LicenseDetails.ShowDialog();
         }
 
@@ -393,7 +395,7 @@ namespace DVLD.Manage_Applications_Forms
         {
             int LocalDrivingApplicationID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            frmPersonLicenseHistory PersonLicenseHistory = new frmPersonLicenseHistory(LocalDrivingApplicationID);
+            frmPersonLicenseHistory PersonLicenseHistory = new frmPersonLicenseHistory(clsLocalDrivingApplication.GetLocalDrivingLicenseApplicationInfoByLDLAppID(LocalDrivingApplicationID).ApplicantPersonID);
             PersonLicenseHistory.ShowDialog();
         }
     }

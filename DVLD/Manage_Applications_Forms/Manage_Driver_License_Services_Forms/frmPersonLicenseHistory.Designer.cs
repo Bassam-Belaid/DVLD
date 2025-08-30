@@ -93,6 +93,7 @@
             this.tbcMenu.SelectedIndex = 0;
             this.tbcMenu.Size = new System.Drawing.Size(1062, 350);
             this.tbcMenu.TabIndex = 15;
+            this.tbcMenu.SelectedIndexChanged += new System.EventHandler(this.tbcMenu_SelectedIndexChanged);
             // 
             // tabPage1
             // 

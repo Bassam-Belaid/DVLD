@@ -730,5 +730,54 @@ namespace DVLDDataAccessLayer
 
             return IsFound;
         }
+
+        public static int GetLicenseIDByLDLAppID(int LDLAppID)
+        {
+            int LicenseID = -1;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"SELECT Licenses.LicenseID
+                            FROM Applications INNER JOIN LocalDrivingLicenseApplications 
+                            ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN Licenses 
+                            ON Applications.ApplicationID = Licenses.ApplicationID
+                            WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLAppID);
+
+            try
+            {
+
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+
+                if (Result != null && int.TryParse(Result.ToString(), out int ID))
+                {
+                    LicenseID = ID;
+                }
+
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return LicenseID;
+        }
+
+
     }
 }

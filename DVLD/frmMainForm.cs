@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using DVLD.Manage_Applications_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Application_Types_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms;
+using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_International_Driver_License_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Test_Types_Forms;
 using DVLD.Manage_Drivers_Forms;
 using DVLD.Manage_People_Forms;
@@ -120,6 +121,24 @@ namespace DVLD
             {
             frmManageLocalDrivingLicenseApplications ManageLocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
             ManageLocalDrivingLicenseApplications.ShowDialog();
+            }
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eAddNewInternationlLicense))
+            {
+                frmAddNewInternationalDrivingLicenseApplication AddNewInternationalDrivingLicenseApplication = new frmAddNewInternationalDrivingLicenseApplication();
+                AddNewInternationalDrivingLicenseApplication.ShowDialog();
+            }
+        }
+
+        private void internationalLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eManageInternationalLicenseApplications))
+            {
+                frmManageInternationalDrivingLicenseApplications ManageInternationalDrivingLicenseApplications = new frmManageInternationalDrivingLicenseApplications();
+                ManageInternationalDrivingLicenseApplications.ShowDialog();
             }
         }
     }

@@ -14,9 +14,17 @@ namespace DVLD
 {
     public partial class ctrlLicenseCard : UserControl
     {
+        public clsPerson Person;
+        public clsDriver Driver;
+        public clsLicense License;
+
         public ctrlLicenseCard()
         {
             InitializeComponent();
+            
+            Person = null;
+            License = null;
+            Driver = null;
         }
 
         private void _SetDefaultImage(bool DefaultImage)
@@ -39,7 +47,7 @@ namespace DVLD
             }
         }
 
-        private void LoadPersonInfo(clsPerson Person)
+        private void _LoadPersonInfo(clsPerson Person)
         {
             lblName.Text = Person.GetFullName();
             lblN_N.Text = Person.NationalNo;
@@ -54,7 +62,7 @@ namespace DVLD
                 _SetCustomImage(Person.ImagePath);
         }
 
-        private void LoadLicenseInfo(clsLicense License)
+        private void _LoadLicenseInfo(clsLicense License)
         {
             lblLicenseClass.Text = clsLicenseClass.GetLicenseClassNameByLicenseClassID(License.LicenseClassID);
             lblLicennceID.Text = License.GetLicenseID().ToString();
@@ -66,14 +74,48 @@ namespace DVLD
             lblExpirationDate.Text = License.ExpirationDate.ToString("dd/MM/yyyy");
         }
 
-        public void LoadLicenseDetailsByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID) 
+        private void _Clear() 
         {
-            clsLocalDrivingApplication LocalDrivingApplication = clsLocalDrivingApplication.GetLocalDrivingLicenseApplicationInfoByLDLAppID(LocalDrivingLicenseApplicationID);
-            clsPerson Person = clsPerson.GetPersonInfoByPersonID(LocalDrivingApplication.ApplicantPersonID);
-            clsLicense License = clsLicense.GetLicenseByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID);
+            lblName.Text = "???";
+            lblN_N.Text = "???";
+            lblGender.Text = "???";
+            lblDateOfBirth.Text = "???";
+            pbxGender.Image = Properties.Resources.Male;
+            _SetDefaultImage(true);
 
-            LoadPersonInfo(Person);
-            LoadLicenseInfo(License);
+            lblLicenseClass.Text = "???";
+            lblLicennceID.Text = "???";
+            lblIssueDate.Text = "???";
+            lblIssueReason.Text = "???";
+            lblNotes.Text = "???";
+            lblIsActive.Text = "???";
+            lblDriverID.Text = "???";
+            lblExpirationDate.Text = "???";
+
+            Person = null;
+            License = null;
+            Driver = null;
+
+        }
+
+        public void LoadLicenseDetailsByLicenseID(int LicenseID)
+        {
+            License = clsLicense.GetLicenseByLicenseID(LicenseID);
+
+            if (License != null)
+            {
+                Driver = clsDriver.GetDriverInfoByDriverID(License.DriverID);
+                Person = clsPerson.GetPersonInfoByPersonID(Driver.GetPersonID());
+
+                _LoadPersonInfo(Person);
+                _LoadLicenseInfo(License);
+            }
+
+            else 
+            {
+                MessageBox.Show("No License Found With ID " + LicenseID.ToString() + ".", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _Clear();
+            }
         }
     }
 }

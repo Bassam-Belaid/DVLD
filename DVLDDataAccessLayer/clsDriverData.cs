@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
+using System.Net;
+using System.Security.Policy;
 
 namespace DVLDDataAccessLayer
 {
@@ -235,5 +237,57 @@ namespace DVLDDataAccessLayer
 
         }
 
+        public static bool GetDriverInfoByDriverID(int DriverID, ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            bool IsFound = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT * FROM Drivers WHERE DriverID = @DriverID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+
+                    IsFound = true;
+
+                    PersonID = (int)Reader["PersonID"];
+                    CreatedByUserID = (int)Reader["CreatedByUserID"];
+                    CreatedDate = (DateTime)Reader["CreatedDate"];
+                 
+                }
+                else
+                {
+                    IsFound = false;
+                }
+
+                Reader.Close();
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+                IsFound = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                IsFound = false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsFound;
+        }
     }
 }

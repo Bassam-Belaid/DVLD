@@ -183,5 +183,15 @@ namespace DVLDBusinessLayer
         {
             return clsLocalDrivingApplicationData.IsLocalDrivingLicenseApplicationCompleted(LDLAppID);
         }
+
+        public static int GetLicenseIDByLDLAppID(int LDLAppID) 
+        {
+            return clsLocalDrivingApplicationData.GetLicenseIDByLDLAppID(LDLAppID);
+        }
+
+        public bool IsLicenseAnOrdinaryDrivingLicense() 
+        {
+            return (clsLicenseClass.GetLicenseClassNameByLicenseClassID(this.LicenseClassID)) == ("Class 3 - Ordinary driving license");
+        }
     }
 }
