@@ -12,6 +12,108 @@ namespace DVLDDataAccessLayer
 {
     public static class clsLicenseData
     {
+        public static bool RenewLicense(int OldLicenseID, ref int ApplicationID, ref int LicenseID, int DriverID, int LicenseClassID, DateTime ExpirationDate, string Notes, int IssueReason, int CreatedByUserID)
+        {
+            bool IsRenewed = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"BEGIN TRY
+                                BEGIN TRANSACTION;
+
+                                DECLARE @ApplicantPersonID INT;
+                                SET @ApplicantPersonID = (SELECT PersonID FROM Drivers WHERE DriverID = @DriverID);
+
+                                DECLARE @ApplicationFees SMALLMONEY;
+                                SET @ApplicationFees = (SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = 2);
+
+                                DECLARE @NewApplicationID INT;
+
+                                INSERT INTO Applications 
+                                    (ApplicantPersonID, ApplicationTypeID, PaidFees, CreatedByUserID)
+                                VALUES 
+                                    (@ApplicantPersonID, 2, @ApplicationFees, @CreatedByUserID);
+
+                                SET @NewApplicationID = SCOPE_IDENTITY();
+
+                                DECLARE @PaidFees SMALLMONEY;
+                                SET @PaidFees = (SELECT ClassFees FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
+
+                                INSERT INTO Licenses
+                                    (ApplicationID, DriverID, LicenseClass, ExpirationDate, Notes, PaidFees, IssueReason, CreatedByUserID)
+                                VALUES
+                                    (@NewApplicationID, @DriverID, @LicenseClass, @ExpirationDate, @Notes, @PaidFees, @IssueReason, @CreatedByUserID);
+
+                                DECLARE @NewLicenseID INT;
+                                SET @NewLicenseID = SCOPE_IDENTITY();
+
+                                UPDATE Licenses
+                                SET IsActive = 0
+                                WHERE LicenseID = @OldLicenseID;
+
+                                COMMIT TRANSACTION;
+
+                                SELECT @NewApplicationID AS NewApplicationID, @NewLicenseID AS NewLicenseID;
+                            END TRY
+                            BEGIN CATCH
+                                ROLLBACK TRANSACTION;
+
+                                SELECT -1 AS NewApplicationID, -1 AS NewLicenseID;
+                            END CATCH;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            
+            Command.Parameters.AddWithValue("@OldLicenseID", OldLicenseID);
+            Command.Parameters.AddWithValue("@DriverID", DriverID);
+            Command.Parameters.AddWithValue("@LicenseClass", LicenseClassID);
+            Command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+
+            if (!string.IsNullOrEmpty(Notes))
+                Command.Parameters.AddWithValue("@Notes", Notes);
+            else
+                Command.Parameters.AddWithValue("@Notes", DBNull.Value);
+
+            Command.Parameters.AddWithValue("@IssueReason", IssueReason);
+            Command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+
+                    IsRenewed = true;
+
+                    ApplicationID = (int)Reader["NewApplicationID"];
+                    LicenseID = (int)Reader["NewLicenseID"];
+
+                }
+                else
+                {
+                    IsRenewed = false;
+                }
+
+                Reader.Close();
+
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsRenewed;
+        }
+
         public static int IssueNewsLicense(int ApplicationID, int LicenseClassID, string Notes, int CreatedByUserID)
         {
             int License = -1;
@@ -19,47 +121,47 @@ namespace DVLDDataAccessLayer
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string Query = @"BEGIN TRY
-    BEGIN TRANSACTION;
+                                BEGIN TRANSACTION;
 
-    DECLARE @PersonID INT;
-    SET @PersonID = (SELECT ApplicantPersonID FROM Applications WHERE ApplicationID = @ApplicationID);
+                                DECLARE @PersonID INT;
+                                SET @PersonID = (SELECT ApplicantPersonID FROM Applications WHERE ApplicationID = @ApplicationID);
 
-    INSERT INTO Drivers (PersonID, CreatedByUserID)
-    VALUES (@PersonID, @CreatedByUserID);
+                                INSERT INTO Drivers (PersonID, CreatedByUserID)
+                                VALUES (@PersonID, @CreatedByUserID);
 
-    DECLARE @DriverID INT;
-    SET @DriverID = SCOPE_IDENTITY();
+                                DECLARE @DriverID INT;
+                                SET @DriverID = SCOPE_IDENTITY();
 
-    DECLARE @DefaultValidityLength TINYINT;
-    SET @DefaultValidityLength = (SELECT DefaultValidityLength FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
+                                DECLARE @DefaultValidityLength TINYINT;
+                                SET @DefaultValidityLength = (SELECT DefaultValidityLength FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
 
-    DECLARE @ExpirationDate DATETIME;
-    SET @ExpirationDate = DATEADD(YEAR, @DefaultValidityLength, GETDATE());
+                                DECLARE @ExpirationDate DATETIME;
+                                SET @ExpirationDate = DATEADD(YEAR, @DefaultValidityLength, GETDATE());
 
-    DECLARE @PaidFees SMALLMONEY;
-    SET @PaidFees = (SELECT ClassFees FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
+                                DECLARE @PaidFees SMALLMONEY;
+                                SET @PaidFees = (SELECT ClassFees FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
 
-    INSERT INTO Licenses
-        (ApplicationID, DriverID, LicenseClass, ExpirationDate, Notes, PaidFees, CreatedByUserID)
-    VALUES
-        (@ApplicationID, @DriverID, @LicenseClass, @ExpirationDate, @Notes, @PaidFees, @CreatedByUserID);
+                                INSERT INTO Licenses
+                                    (ApplicationID, DriverID, LicenseClass, ExpirationDate, Notes, PaidFees, CreatedByUserID)
+                                VALUES
+                                    (@ApplicationID, @DriverID, @LicenseClass, @ExpirationDate, @Notes, @PaidFees, @CreatedByUserID);
 
-    DECLARE @NewLicenseID INT;
-    SET @NewLicenseID = SCOPE_IDENTITY();
+                                DECLARE @NewLicenseID INT;
+                                SET @NewLicenseID = SCOPE_IDENTITY();
 
-    UPDATE Applications
-    SET ApplicationStatus = 3, LastStatusDate = GETDATE()
-    WHERE ApplicationID = @ApplicationID;
+                                UPDATE Applications
+                                SET ApplicationStatus = 3, LastStatusDate = GETDATE()
+                                WHERE ApplicationID = @ApplicationID;
 
-    COMMIT TRANSACTION;
+                                COMMIT TRANSACTION;
 
-    SELECT @NewLicenseID AS NewLicenseID;
-END TRY
-BEGIN CATCH
-    ROLLBACK TRANSACTION;
+                                SELECT @NewLicenseID AS NewLicenseID;
+                            END TRY
+                            BEGIN CATCH
+                                ROLLBACK TRANSACTION;
 
-    SELECT -1 AS NewLicenseID;
-END CATCH;";
+                                SELECT -1 AS NewLicenseID;
+                            END CATCH;";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
 
@@ -98,6 +200,7 @@ END CATCH;";
 
             return License;
         }
+
 
         public static bool GetLicenseByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID, ref int LicenseID, ref int ApplicationID, ref int DriverID,
             ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, 

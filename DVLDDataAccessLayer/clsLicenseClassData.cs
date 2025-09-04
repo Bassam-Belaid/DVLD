@@ -88,6 +88,46 @@ namespace DVLDDataAccessLayer
             return LicenseClassID;
         }
 
+        public static decimal GetLicenseClassFeesByLicenseClassName(string LicenseClassName)
+        {
+            decimal LicenseClassFees = 0;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT ClassFees FROM LicenseClasses WHERE ClassName = @LicenseClassName;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LicenseClassName", LicenseClassName);
+
+            try
+            {
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+                if (decimal.TryParse(Result.ToString(), out decimal Fees))
+                {
+                    LicenseClassFees = Fees;
+                }
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return LicenseClassFees;
+        }
+
         public static string GetLicenseClassNameByLicenseClassID(int LicenseClassID)
         {
             string LicenseClassName = "";

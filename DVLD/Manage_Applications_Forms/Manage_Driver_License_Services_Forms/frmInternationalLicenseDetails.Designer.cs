@@ -31,6 +31,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ctrlInternationalLicenseCard1 = new DVLD.ctrlInternationalLicenseCard();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,12 +63,28 @@
             this.ctrlInternationalLicenseCard1.Size = new System.Drawing.Size(870, 288);
             this.ctrlInternationalLicenseCard1.TabIndex = 20;
             // 
+            // btnClose
+            // 
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::DVLD.Properties.Resources.Close;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(735, 486);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(147, 38);
+            this.btnClose.TabIndex = 24;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmInternationalLicenseDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(894, 484);
+            this.ClientSize = new System.Drawing.Size(894, 536);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ctrlInternationalLicenseCard1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -88,5 +105,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private ctrlInternationalLicenseCard ctrlInternationalLicenseCard1;
+        private System.Windows.Forms.Button btnClose;
     }
 }

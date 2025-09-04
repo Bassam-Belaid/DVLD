@@ -36,6 +36,7 @@
             this.internationalLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localDrivingLicenseApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.internationalLicenseApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detainLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationsTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,7 @@
             this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.internationalLicenseApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renewDriverLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +84,8 @@
             // driverLicenseServicesToolStripMenuItem
             // 
             this.driverLicenseServicesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newDriverLicenseToolStripMenuItem});
+            this.newDriverLicenseToolStripMenuItem,
+            this.renewDriverLicenseToolStripMenuItem});
             this.driverLicenseServicesToolStripMenuItem.Image = global::DVLD.Properties.Resources.Driver_License_Services;
             this.driverLicenseServicesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.driverLicenseServicesToolStripMenuItem.Name = "driverLicenseServicesToolStripMenuItem";
@@ -98,7 +100,7 @@
             this.newDriverLicenseToolStripMenuItem.Image = global::DVLD.Properties.Resources.Card;
             this.newDriverLicenseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.newDriverLicenseToolStripMenuItem.Name = "newDriverLicenseToolStripMenuItem";
-            this.newDriverLicenseToolStripMenuItem.Size = new System.Drawing.Size(274, 70);
+            this.newDriverLicenseToolStripMenuItem.Size = new System.Drawing.Size(290, 70);
             this.newDriverLicenseToolStripMenuItem.Text = "New Driver License";
             // 
             // localLicenseToolStripMenuItem
@@ -138,6 +140,15 @@
             this.localDrivingLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(389, 70);
             this.localDrivingLicenseApplicationsToolStripMenuItem.Text = "Local Driving License Applications";
             this.localDrivingLicenseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.localDrivingLicenseApplicationsToolStripMenuItem_Click);
+            // 
+            // internationalLicenseApplicationsToolStripMenuItem
+            // 
+            this.internationalLicenseApplicationsToolStripMenuItem.Image = global::DVLD.Properties.Resources.International;
+            this.internationalLicenseApplicationsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.internationalLicenseApplicationsToolStripMenuItem.Name = "internationalLicenseApplicationsToolStripMenuItem";
+            this.internationalLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(389, 70);
+            this.internationalLicenseApplicationsToolStripMenuItem.Text = "International License Applications";
+            this.internationalLicenseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseApplicationsToolStripMenuItem_Click);
             // 
             // detainLicenseToolStripMenuItem
             // 
@@ -231,14 +242,14 @@
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
-            // internationalLicenseApplicationsToolStripMenuItem
+            // renewDriverLicenseToolStripMenuItem
             // 
-            this.internationalLicenseApplicationsToolStripMenuItem.Image = global::DVLD.Properties.Resources.International;
-            this.internationalLicenseApplicationsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.internationalLicenseApplicationsToolStripMenuItem.Name = "internationalLicenseApplicationsToolStripMenuItem";
-            this.internationalLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(389, 70);
-            this.internationalLicenseApplicationsToolStripMenuItem.Text = "International License Applications";
-            this.internationalLicenseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseApplicationsToolStripMenuItem_Click);
+            this.renewDriverLicenseToolStripMenuItem.Image = global::DVLD.Properties.Resources.Card;
+            this.renewDriverLicenseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.renewDriverLicenseToolStripMenuItem.Name = "renewDriverLicenseToolStripMenuItem";
+            this.renewDriverLicenseToolStripMenuItem.Size = new System.Drawing.Size(290, 70);
+            this.renewDriverLicenseToolStripMenuItem.Text = "Renew Driver License";
+            this.renewDriverLicenseToolStripMenuItem.Click += new System.EventHandler(this.renewDriverLicenseToolStripMenuItem_Click);
             // 
             // frmMainForm
             // 
@@ -281,5 +292,6 @@
         private System.Windows.Forms.ToolStripMenuItem localDrivingLicenseApplicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalLicenseApplicationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renewDriverLicenseToolStripMenuItem;
     }
 }

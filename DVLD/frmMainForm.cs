@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using DVLD.Manage_Applications_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Application_Types_Forms;
+using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_Driver_License_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_New_International_Driver_License_Forms;
 using DVLD.Manage_Applications_Forms.Manage_Test_Types_Forms;
@@ -139,6 +140,15 @@ namespace DVLD
             {
                 frmManageInternationalDrivingLicenseApplications ManageInternationalDrivingLicenseApplications = new frmManageInternationalDrivingLicenseApplications();
                 ManageInternationalDrivingLicenseApplications.ShowDialog();
+            }
+        }
+
+        private void renewDriverLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eRenewDriverLicense))
+            {
+                frmRenewDriverLicense RenewDriverLicense = new frmRenewDriverLicense();
+                RenewDriverLicense.ShowDialog();
             }
         }
     }

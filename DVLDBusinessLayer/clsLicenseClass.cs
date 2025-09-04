@@ -17,6 +17,11 @@ namespace DVLDBusinessLayer
             return clsLicenseClassData.GetLicenseClassIDByLicenseClassName(LicenseClassName);
         }
 
+        public static decimal GetLicenseClassFeesByLicenseClassName(string LicenseClassName) 
+        {
+            return clsLicenseClassData.GetLicenseClassFeesByLicenseClassName(LicenseClassName);
+        }
+
         public static string GetLicenseClassNameByLicenseClassID(int LicenseClassID) 
         {
             return clsLicenseClassData.GetLicenseClassNameByLicenseClassID(LicenseClassID);

@@ -17,5 +17,10 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
             InitializeComponent();
             ctrlInternationalLicenseCard1.LoadLicenseDetailsByLicenseID(InternationalLicenseID);
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();   
+        }
     }
 }

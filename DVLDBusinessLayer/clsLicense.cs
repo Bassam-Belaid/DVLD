@@ -75,7 +75,19 @@ namespace DVLDBusinessLayer
             this.CreatedByUserID = CreatedByUserID;
         }
 
-        private bool _IssueNewsLicense() 
+        public bool RenewLicense() 
+        {
+            int ApplicationID = -1, LicenseID = -1;
+            
+            clsLicenseData.RenewLicense(this._LicenseID, ref ApplicationID, ref LicenseID, this.DriverID, this.LicenseClassID, this.ExpirationDate, this.Notes, (int)enIssueReasons.eRenewal, this.CreatedByUserID);
+
+            this.ApplicationID = ApplicationID;
+            this._LicenseID = LicenseID;
+
+            return (this.ApplicationID != -1 && this._LicenseID != -1);
+        }
+
+        private bool _IssueNewLicense()
         {
             this._LicenseID = clsLicenseData.IssueNewsLicense(this.ApplicationID, this.LicenseClassID, this.Notes, this.CreatedByUserID);
 
@@ -87,7 +99,7 @@ namespace DVLDBusinessLayer
             switch (this._Mode) 
             {
                 case enMode.eAddNew:
-                    if(_IssueNewsLicense()) 
+                    if(_IssueNewLicense()) 
                     {
                         this._Mode = enMode.eUpdate;
                         return true;

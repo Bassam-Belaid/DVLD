@@ -67,5 +67,22 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
             else
                 _LoadInternationalLicensesHistory(clsInternationalLicense.GetAllInternationalLicensesForApplicant(_PersonID));
         }
+
+        private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (tbcMenu.SelectedIndex == 0) 
+            {
+                int LicenseID = int.Parse(dgvLocalLicenses.SelectedRows[0].Cells[0].Value.ToString());
+                frmLicenseDetails LicenseDetails = new frmLicenseDetails(LicenseID);
+                LicenseDetails.ShowDialog();
+            }
+            else 
+            {
+                int InternationalLicenseID = int.Parse(dgvInternationalLicenses.SelectedRows[0].Cells[0].Value.ToString());
+                frmInternationalLicenseDetails InternationalLicenseDetails = new frmInternationalLicenseDetails(InternationalLicenseID);
+                InternationalLicenseDetails.ShowDialog();
+            }
+        }
     }
 }
