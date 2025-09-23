@@ -70,6 +70,7 @@ namespace DVLD
             lblIssueReason.Text = License.GetIssueReason();
             lblNotes.Text = (License.Notes != null) ? License.Notes : "No Notes";
             lblIsActive.Text = (License.IsActive) ? "Yes" : "No";
+            lblIsDetained.Text = (License.IsDetained) ? "Yes" : "No";
             lblDriverID.Text = License.DriverID.ToString();
             lblExpirationDate.Text = License.ExpirationDate.ToString("dd/MM/yyyy");
         }

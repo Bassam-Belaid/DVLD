@@ -114,6 +114,107 @@ namespace DVLDDataAccessLayer
             return IsRenewed;
         }
 
+        public static bool ReplacementForDamagedOrLostLicense(int OldLicenseID, ref int ApplicationID, ref int LicenseID, int DriverID, int LicenseClassID, DateTime ExpirationDate, string Notes, int IssueReason, int ApplicationTypeID, decimal ApplicationFees, int CreatedByUserID)
+        { 
+                bool IsReplacement = false;
+
+                SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+                string Query = @"BEGIN TRY
+                                BEGIN TRANSACTION;
+
+                                DECLARE @ApplicantPersonID INT;
+                                SET @ApplicantPersonID = (SELECT PersonID FROM Drivers WHERE DriverID = @DriverID);
+
+                                DECLARE @NewApplicationID INT;
+
+                                INSERT INTO Applications 
+                                    (ApplicantPersonID, ApplicationTypeID, PaidFees, CreatedByUserID)
+                                VALUES 
+                                    (@ApplicantPersonID, @ApplicationTypeID, @ApplicationFees, @CreatedByUserID);
+
+                                SET @NewApplicationID = SCOPE_IDENTITY();
+
+                                DECLARE @PaidFees SMALLMONEY;
+                                SET @PaidFees = (SELECT ClassFees FROM LicenseClasses WHERE LicenseClassID = @LicenseClass);
+
+                                INSERT INTO Licenses
+                                    (ApplicationID, DriverID, LicenseClass, ExpirationDate, Notes, PaidFees, IssueReason, CreatedByUserID)
+                                VALUES
+                                    (@NewApplicationID, @DriverID, @LicenseClass, @ExpirationDate, @Notes, @PaidFees, @IssueReason, @CreatedByUserID);
+
+                                DECLARE @NewLicenseID INT;
+                                SET @NewLicenseID = SCOPE_IDENTITY();
+
+                                UPDATE Licenses
+                                SET IsActive = 0
+                                WHERE LicenseID = @OldLicenseID;
+
+                                COMMIT TRANSACTION;
+
+                                SELECT @NewApplicationID AS NewApplicationID, @NewLicenseID AS NewLicenseID;
+                            END TRY
+                            BEGIN CATCH
+                                ROLLBACK TRANSACTION;
+
+                                SELECT -1 AS NewApplicationID, -1 AS NewLicenseID;
+                            END CATCH;";
+
+                SqlCommand Command = new SqlCommand(Query, Connection);
+
+                Command.Parameters.AddWithValue("@OldLicenseID", OldLicenseID);
+                Command.Parameters.AddWithValue("@DriverID", DriverID);
+                Command.Parameters.AddWithValue("@LicenseClass", LicenseClassID);
+                Command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+
+                if (!string.IsNullOrEmpty(Notes))
+                    Command.Parameters.AddWithValue("@Notes", Notes);
+                else
+                    Command.Parameters.AddWithValue("@Notes", DBNull.Value);
+
+                Command.Parameters.AddWithValue("@IssueReason", IssueReason);
+                Command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+                Command.Parameters.AddWithValue("@ApplicationFees", ApplicationFees);
+                Command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+                try
+                {
+                    Connection.Open();
+                    SqlDataReader Reader = Command.ExecuteReader();
+
+                    if (Reader.Read())
+                    {
+
+                        IsReplacement = true;
+
+                        ApplicationID = (int)Reader["NewApplicationID"];
+                        LicenseID = (int)Reader["NewLicenseID"];
+
+                    }
+                    else
+                    {
+                        IsReplacement = false;
+                    }
+
+                    Reader.Close();
+
+                }
+                catch (SqlException sqlEx)
+                {
+                    Console.WriteLine($"SQL Error: {sqlEx.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+
+                return IsReplacement;
+        }
+
         public static int IssueNewsLicense(int ApplicationID, int LicenseClassID, string Notes, int CreatedByUserID)
         {
             int License = -1;
@@ -393,6 +494,45 @@ namespace DVLDDataAccessLayer
             }
 
             return IsFound;
+        }
+
+        public static bool IsLicenseDetained(int LicenseID)
+        {
+            bool IsDetained = false;
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"SELECT IsFound = 1 FROM DetainedLicenses
+                                WHERE DetainedLicenses.LicenseID = @LicenseID;";
+
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                IsDetained = Reader.HasRows;
+
+                Reader.Close();
+            }
+
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine($"SQL Error: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return IsDetained;
         }
     }
 }

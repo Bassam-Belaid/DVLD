@@ -151,5 +151,34 @@ namespace DVLD
                 RenewDriverLicense.ShowDialog();
             }
         }
+
+        private void replacementForDamagedOrLostLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eReplacementForDamagedOrLostLicense))
+            {
+                frmReplacementForDamagedOrLostLicense ReplacementForDamagedOrLostLicenses = new frmReplacementForDamagedOrLostLicense();
+                ReplacementForDamagedOrLostLicenses.ShowDialog();
+            }
+        }
+
+        private void releaseDetainLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eManageLocalDrivingLicenseApplications))
+            {
+                frmManageLocalDrivingLicenseApplications ManageLocalDrivingLicenseApplications = new frmManageLocalDrivingLicenseApplications();
+                ManageLocalDrivingLicenseApplications.ShowDialog();
+            }
+        }
+
+        private void detainLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense DetainLicense = new frmDetainLicense();
+            DetainLicense.ShowDialog();
+        }
     }
 }

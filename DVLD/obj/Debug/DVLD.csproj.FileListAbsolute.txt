@@ -250,3 +250,5 @@ C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.ctrlIntern
 C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.frmInternationalLicenseDetails.resources
 C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Applications_Forms.frmManageInternationalDrivingLicenseApplications.resources
 C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.frmRenewDriverLicense.resources
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.frmReplacementForDamagedOrLostLicense.resources
+C:\Users\Bassam\Downloads\My-Github-Projects\DVLD\DVLD\obj\Debug\DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.frmDetainLicense.resources

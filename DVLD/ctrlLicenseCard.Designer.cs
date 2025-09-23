@@ -66,6 +66,9 @@
             this.lblLicenseClass = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblIsDetained = new System.Windows.Forms.Label();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -80,10 +83,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblIsDetained);
+            this.groupBox1.Controls.Add(this.pictureBox12);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.pbxPersonImage);
             this.groupBox1.Controls.Add(this.lblExpirationDate);
             this.groupBox1.Controls.Add(this.pictureBox11);
@@ -488,6 +495,35 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Class :";
             // 
+            // lblIsDetained
+            // 
+            this.lblIsDetained.AutoSize = true;
+            this.lblIsDetained.Location = new System.Drawing.Point(501, 300);
+            this.lblIsDetained.Name = "lblIsDetained";
+            this.lblIsDetained.Size = new System.Drawing.Size(36, 20);
+            this.lblIsDetained.TabIndex = 76;
+            this.lblIsDetained.Text = "???";
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = global::DVLD.Properties.Resources.Question_Mark;
+            this.pictureBox12.Location = new System.Drawing.Point(458, 300);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(26, 20);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 75;
+            this.pictureBox12.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(309, 300);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(127, 20);
+            this.label14.TabIndex = 74;
+            this.label14.Text = "Is Detained ? :";
+            // 
             // ctrlLicenseCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,6 +546,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -554,5 +591,8 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pbxPersonImage;
+        private System.Windows.Forms.Label lblIsDetained;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.Label label14;
     }
 }

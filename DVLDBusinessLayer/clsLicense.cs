@@ -37,6 +37,8 @@ namespace DVLDBusinessLayer
 
         public bool IsActive { set; get; }
 
+        public bool IsDetained { set; get; }
+
         private enIssueReasons IssueReason { set; get; }
 
         public int CreatedByUserID { set; get; }
@@ -53,6 +55,7 @@ namespace DVLDBusinessLayer
             this.Notes = "";
             this.PaidFees = 0;
             this.IsActive = false;
+            this.IsDetained = false;
             this.IssueReason = enIssueReasons.eNew;
             this.CreatedByUserID = -1;
         }
@@ -73,6 +76,7 @@ namespace DVLDBusinessLayer
             this.IsActive = IsActive;
             this.IssueReason = (enIssueReasons)IssueReason;
             this.CreatedByUserID = CreatedByUserID;
+            this.IsDetained = clsLicenseData.IsLicenseDetained(LicenseID);
         }
 
         public bool RenewLicense() 
@@ -80,6 +84,32 @@ namespace DVLDBusinessLayer
             int ApplicationID = -1, LicenseID = -1;
             
             clsLicenseData.RenewLicense(this._LicenseID, ref ApplicationID, ref LicenseID, this.DriverID, this.LicenseClassID, this.ExpirationDate, this.Notes, (int)enIssueReasons.eRenewal, this.CreatedByUserID);
+
+            this.ApplicationID = ApplicationID;
+            this._LicenseID = LicenseID;
+
+            return (this.ApplicationID != -1 && this._LicenseID != -1);
+        }
+
+        public bool ReplacementForDamagedOrLostLicense(int IssueReason)
+        {
+            int ApplicationID = -1, LicenseID = -1;
+
+            int ApplicationTypeID = -1;
+            decimal ApplicationFees = 0;
+
+            if (IssueReason == (int)enIssueReasons.eLostReplacement)
+            {
+                ApplicationTypeID = clsApplicationType.GetApplicationTypeIDByApplicationTypeTitle("Replacement for a Lost Driving License");
+                ApplicationFees = clsApplicationType.GetApplicationTypeFeesByApplicationTypeTitle("Replacement for a Lost Driving License");
+            }
+            else 
+            {
+                ApplicationTypeID = clsApplicationType.GetApplicationTypeIDByApplicationTypeTitle("Replacement for a Damaged Driving License");
+                ApplicationFees = clsApplicationType.GetApplicationTypeFeesByApplicationTypeTitle("Replacement for a Damaged Driving License");
+            }
+
+            clsLicenseData.ReplacementForDamagedOrLostLicense(this._LicenseID, ref ApplicationID, ref LicenseID, this.DriverID, this.LicenseClassID, this.ExpirationDate, this.Notes, IssueReason, ApplicationTypeID, ApplicationFees, this.CreatedByUserID);
 
             this.ApplicationID = ApplicationID;
             this._LicenseID = LicenseID;

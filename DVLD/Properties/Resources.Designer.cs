@@ -183,6 +183,16 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DamagedOrLostLicense {
+            get {
+                object obj = ResourceManager.GetObject("DamagedOrLostLicense", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Delete_Application {
             get {
                 object obj = ResourceManager.GetObject("Delete_Application", resourceCulture);
@@ -546,6 +556,26 @@ namespace DVLD.Properties {
         internal static System.Drawing.Bitmap Red_Cross {
             get {
                 object obj = ResourceManager.GetObject("Red_Cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ReleaseDetainLicense {
+            get {
+                object obj = ResourceManager.GetObject("ReleaseDetainLicense", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RenewLicense {
+            get {
+                object obj = ResourceManager.GetObject("RenewLicense", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
