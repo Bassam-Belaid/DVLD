@@ -163,7 +163,11 @@ namespace DVLD
 
         private void releaseDetainLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eReleaseDetainedLicense))
+            {
+                frmReleaseDetainedLicense ReleaseDetainedLicense = new frmReleaseDetainedLicense();
+                ReleaseDetainedLicense.ShowDialog();
+            }
         }
 
         private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,8 +181,29 @@ namespace DVLD
 
         private void detainLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmDetainLicense DetainLicense = new frmDetainLicense();
-            DetainLicense.ShowDialog();
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eDetainLicense))
+            {
+                frmDetainLicense DetainLicense = new frmDetainLicense();
+                DetainLicense.ShowDialog();
+            }
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eReleaseDetainedLicense))
+            {
+                frmReleaseDetainedLicense ReleaseDetainedLicense = new frmReleaseDetainedLicense();
+                ReleaseDetainedLicense.ShowDialog();
+            }
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ctrlUserPermission.CheckUserPermissions(clsUserPermission.enPermissions.eManageDetainedLicense))
+            {
+                frmManageDetainedLicenses ManageDetainedLicenses = new frmManageDetainedLicenses();
+                ManageDetainedLicenses.ShowDialog();
+            }
         }
     }
 }

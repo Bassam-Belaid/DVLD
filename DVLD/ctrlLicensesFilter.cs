@@ -39,9 +39,10 @@ namespace DVLD
             }
         }
 
-        public void DisableLicenseFilter() 
+        public void DisableLicenseFilter(int LicenseID = -1) 
         {
             gbxLicenseFilter.Enabled = false;
+            txtSearchInput.Text = LicenseID.ToString();
         }
     }
 }

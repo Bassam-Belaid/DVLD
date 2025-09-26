@@ -7,7 +7,7 @@ namespace DVLDBusinessLayer
     {
         public enum enPermissions { eManagePeople = 1, eManageUsers = 2, eManageDrivers = 4, eManageApplicationTypes = 8, eManageTestTypes = 16,
             eAddNewLocalDrivingLicenseApplication = 32, eManageLocalDrivingLicenseApplications = 64, eAddNewInternationlLicense = 128, eManageInternationalLicenseApplications = 256,
-            eRenewDriverLicense  = 512, eReplacementForDamagedOrLostLicense = 1024
+            eRenewDriverLicense  = 512, eReplacementForDamagedOrLostLicense = 1024, eDetainLicense = 2048, eReleaseDetainedLicense = 4096, eManageDetainedLicense = 8192,
         };
 
         public static readonly Dictionary<enPermissions, string> PermissionDescriptions = new Dictionary<enPermissions, string>
@@ -23,6 +23,10 @@ namespace DVLDBusinessLayer
             { enPermissions.eManageInternationalLicenseApplications, "Manage International License Applications" },
             { enPermissions.eRenewDriverLicense, "Renew Driver License" },
             { enPermissions.eReplacementForDamagedOrLostLicense, "Replacement For Damaged Or Lost License" },
+            { enPermissions.eDetainLicense, "Detain License" },
+            { enPermissions.eReleaseDetainedLicense, "Release Detained License" },
+            { enPermissions.eManageDetainedLicense, "Manage Detained License" },
+
         };
 
         public static int GetPermissionValueByPermissionDescription(string PermissionDescription)

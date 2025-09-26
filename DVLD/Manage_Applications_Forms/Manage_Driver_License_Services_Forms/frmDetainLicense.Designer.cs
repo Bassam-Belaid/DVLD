@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.llblShowLicenceInfo = new System.Windows.Forms.LinkLabel();
             this.llblShowLicencesHistory = new System.Windows.Forms.LinkLabel();
@@ -50,12 +51,14 @@
             this.lblDetainID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.ctrlLicensesFilter1 = new DVLD.ctrlLicensesFilter();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -157,7 +160,6 @@
             this.txtFineFees.Name = "txtFineFees";
             this.txtFineFees.Size = new System.Drawing.Size(388, 92);
             this.txtFineFees.TabIndex = 87;
-            this.txtFineFees.TextChanged += new System.EventHandler(this.txtFineFees_TextChanged);
             // 
             // label9
             // 
@@ -303,6 +305,10 @@
             this.ctrlLicensesFilter1.Size = new System.Drawing.Size(784, 483);
             this.ctrlLicensesFilter1.TabIndex = 91;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmDetainLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,7 +321,11 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.ctrlLicensesFilter1);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDetainLicense";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detain License";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -324,6 +334,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +364,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label lblDetainID;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

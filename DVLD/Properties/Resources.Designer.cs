@@ -223,6 +223,16 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Detain_License_2 {
+            get {
+                object obj = ResourceManager.GetObject("Detain_License_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Driver_License_Services {
             get {
                 object obj = ResourceManager.GetObject("Driver_License_Services", resourceCulture);
@@ -566,6 +576,16 @@ namespace DVLD.Properties {
         internal static System.Drawing.Bitmap ReleaseDetainLicense {
             get {
                 object obj = ResourceManager.GetObject("ReleaseDetainLicense", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ReleaseDetainLicense_2 {
+            get {
+                object obj = ResourceManager.GetObject("ReleaseDetainLicense_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

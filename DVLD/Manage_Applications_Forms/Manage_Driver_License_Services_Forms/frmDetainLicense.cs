@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms.Manage_Local_Driving_License_Applications_Tests.frmAddEditTest;
 
 namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
 {
@@ -16,7 +17,7 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
         private DateTime _DetainDate;
         private decimal _FineFees;
         private string _CreatedByUser;
-        private clsLicense _License;
+        private clsDetainLicense _DetainLicense;
 
         public frmDetainLicense()
         {
@@ -24,8 +25,9 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
 
             ctrlLicensesFilter1.Handler += _SetUpLoadedLicence;
             _DetainDate = DateTime.Now;
+            _FineFees = 0;
             _CreatedByUser = clsGlobal.CurrentUser.UserName;
-            _License = null;
+            _DetainLicense = null;
 
             LoadApplicationInfo();
         }
@@ -34,6 +36,19 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
         {
             lblDetainDate.Text = _DetainDate.ToString("dd/MM/yyyy");
             lblCreatedBy.Text = _CreatedByUser;
+        }
+
+        private bool _IsLicenseActive(clsLicense License)
+        {
+            if (License.IsActive)
+                return true;
+            
+            MessageBox.Show("This License Is Not Active",
+                                          "Not Allowed",
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
+
+            return false;
         }
 
         private bool _IsLicenseDetained(clsLicense License)
@@ -60,7 +75,7 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
 
                 llblShowLicencesHistory.Enabled = true;
 
-                if (!_IsLicenseDetained(ctrlLicensesFilter1.GetLicenseCard().License))
+                if (!_IsLicenseDetained(ctrlLicensesFilter1.GetLicenseCard().License) && _IsLicenseActive(ctrlLicensesFilter1.GetLicenseCard().License))
                     btnSave.Enabled = true;
                 else
                     btnSave.Enabled = false;
@@ -79,9 +94,70 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
             this.Close();
         }
 
+        private bool _IsValidFineFees()
+        {
+            if (string.IsNullOrWhiteSpace(txtFineFees.Text))
+            {
+                errorProvider1.SetError(txtFineFees, "This Field Should Have A Value!");
+                return false;
+            }
+            else if (decimal.TryParse(txtFineFees.Text, out decimal FineFees) && FineFees > 0)
+            {
+                _FineFees = FineFees;
+            }
+            else 
+            {
+                errorProvider1.SetError(txtFineFees, "Please Enter A Valid Decimal Number For The Fine Fees.");
+                return false;
+            }
+
+            errorProvider1.SetError(txtFineFees, "");
+            return true;
+        }
+
+        private bool _Save()
+        {
+            _DetainLicense = new clsDetainLicense();
+
+            _DetainLicense.LicenseID = ctrlLicensesFilter1.GetLicenseCard().License.GetLicenseID();
+            _DetainLicense.FineFees = _FineFees;
+            _DetainLicense.CreatedByUserID = clsGlobal.CurrentUser.GetUserID();
+
+            return _DetainLicense.Save();
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!_IsValidFineFees())
+                return;
 
+            DialogResult Result = MessageBox.Show("Are You Sure About All The Information ?",
+            "Confirm Add",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (Result == DialogResult.Yes)
+            {
+                if (_Save())
+                {
+                    MessageBox.Show("The License Has Been Detained Successfully With ID : " + _DetainLicense.GetDetainID().ToString(),
+                                    "Success",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+
+                    lblDetainID.Text = _DetainLicense.GetDetainID().ToString();
+                    btnSave.Enabled = false;
+                    llblShowLicenceInfo.Enabled = true;
+                    ctrlLicensesFilter1.DisableLicenseFilter();
+                }
+                else
+                {
+                    MessageBox.Show("The Operation Was Canceled. Please Check Your Information And Try Again.",
+                                    "Operation Canceled",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void llblShowLicencesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -92,23 +168,8 @@ namespace DVLD.Manage_Applications_Forms.Manage_Driver_License_Services_Forms
 
         private void llblShowLicenceInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicenseDetails LicenseDetails = new frmLicenseDetails(_License.GetLicenseID());
+            frmLicenseDetails LicenseDetails = new frmLicenseDetails(ctrlLicensesFilter1.GetLicenseCard().License.GetLicenseID());
             LicenseDetails.ShowDialog();
-        }
-
-        private void txtFineFees_TextChanged(object sender, EventArgs e)
-        {
-            if(string.IsNullOrEmpty(txtFineFees.Text))
-                return;
-
-            if (decimal.TryParse(txtFineFees.Text, out decimal FineFees))
-                _FineFees = FineFees;
-
-            else
-            {
-                MessageBox.Show("Please Enter A Valid Decimal Number For The Fine Fees.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtFineFees.Text = txtFineFees.Text.Substring(0, txtFineFees.Text.Length - 1);
-            }
         }
     }
 }

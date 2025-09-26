@@ -503,7 +503,7 @@ namespace DVLDDataAccessLayer
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string Query = @"SELECT IsFound = 1 FROM DetainedLicenses
-                                WHERE DetainedLicenses.LicenseID = @LicenseID;";
+                                WHERE DetainedLicenses.LicenseID = @LicenseID AND DetainedLicenses.IsReleased = 0;";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
 
@@ -534,5 +534,7 @@ namespace DVLDDataAccessLayer
 
             return IsDetained;
         }
+
+
     }
 }

@@ -392,7 +392,11 @@
             this.Controls.Add(this.ctrlLicensesFilter1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmReplacementForDamagedOrLostLicense";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Replacement For Damaged Or Lost Licenses";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
